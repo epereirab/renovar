@@ -1,7 +1,7 @@
-TECNOLOGIAS,tecnologia_min
-eolica,550
-solar,450
-biomasa,100
-biogas,35
-biogasRS,15
-PAH,50
+TECNOLOGIAS,tecnologia_min,tecnologia_tejecucionmax
+eolica,550,730
+solar,450,730
+biomasa,100,730
+biogas,35,730
+biogasRS,15,730
+PAH,50,730

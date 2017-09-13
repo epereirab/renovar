@@ -57,17 +57,17 @@ nombre_archivo=path_datos+'data_generadores.csv'
 print "importando: " + nombre_archivo
 data_modelo.load(filename=nombre_archivo,
                  param=(model.gen_disponible,model.gen_pdi, model.gen_tecnologia,
-                        model.gen_pmax, model.gen_pmin, model.gen_poa),
+                        model.gen_pmax, model.gen_pmin, model.gen_precio, model.gen_fppdi,
+                        model.gen_tejecucion, model.gen_poa),
                  index=model.GENERADORES)
 print 'importacion OK'
 
 nombre_archivo=path_datos+'data_tecnologias.csv'
 print "importando: " + nombre_archivo
 data_modelo.load(filename=nombre_archivo,
-                 param=(model.tecnologia_min),
+                 param=(model.tecnologia_min, model.tecnologia_tejecucionmax),
                  index=model.TECNOLOGIAS)
 print 'importacion OK'
-
 
 nombre_archivo=path_datos+'data_zonas.csv'
 print "importando: " + nombre_archivo

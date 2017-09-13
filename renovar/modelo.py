@@ -23,7 +23,7 @@ model.PDI = Set()
 model.GENERADORES = Set()
 # TECNOLOGIAS
 model.TECNOLOGIAS = Set()
-# TECNOLOGIAS
+# ZONAS
 model.ZONAS = Set()
 
 # CORTES DE BENDERS
@@ -45,10 +45,14 @@ model.gen_pdi = Param(model.GENERADORES)
 model.gen_tecnologia = Param(model.GENERADORES)
 model.gen_pmax = Param(model.GENERADORES)
 model.gen_pmin = Param(model.GENERADORES)
+model.gen_precio = Param(model.GENERADORES)
+model.gen_fppdi = Param(model.GENERADORES)
+model.gen_tejecucion = Param(model.GENERADORES)
 model.gen_poa = Param(model.GENERADORES)
 
 # TECNOLOGIAS
 model.tecnologia_min = Param(model.TECNOLOGIAS)
+model.tecnologia_tejecucionmax = Param(model.TECNOLOGIAS)
 
 # ZONAS
 model.zona_max = Param(model.ZONAS)
@@ -114,7 +118,8 @@ model.CT_potencia_maxima = Constraint(model.GENERADORES, rule=gen_pmax_rule)
 
 # CONSTRAINT 4: minimo por tecnologia
 def tecnologia_balance_rule(model, tecnologia):
-
+    if not model.config_value['restriccion_por_tecnologia']:
+        return Constraint.Skip
     lside = sum(model.GEN_PC[g] for g in model.GENERADORES if model.gen_tecnologia[g] == tecnologia)
     rside = (model.tecnologia_min[tecnologia])
     return lside >= rside
