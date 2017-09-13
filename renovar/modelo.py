@@ -21,6 +21,8 @@ model.CONFIG = Set()
 model.PDI = Set()
 # GENERADORES
 model.GENERADORES = Set()
+# TECNOLOGIAS
+model.TECNOLOGIAS = Set()
 
 # CORTES DE BENDERS
 #model.BENDERS = Set(within=PositiveIntegers, ordered=True)
@@ -43,7 +45,8 @@ model.gen_pmax = Param(model.GENERADORES)
 model.gen_pmin = Param(model.GENERADORES)
 model.gen_poa = Param(model.GENERADORES)
 
-
+# TECNOLOGIAS
+model.tecnologia_min = Param(model.TECNOLOGIAS)
 ###########################################################################
 # SETS FROM PARAMETERS
 ###########################################################################

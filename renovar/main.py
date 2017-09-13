@@ -60,6 +60,14 @@ data_modelo.load(filename=nombre_archivo,
                  index=model.GENERADORES)
 print 'importacion OK'
 
+nombre_archivo=path_datos+'data_tecnologias.csv'
+print "importando: " + nombre_archivo
+data_modelo.load(filename=nombre_archivo,
+                 param=(model.tecnologia_min),
+                 index=model.TECNOLOGIAS)
+print 'importacion OK'
+
+
 ###########################################################################
 # CREANDO MODELO Y RESOLVIENDO OPTIMIZACION
 ###########################################################################
