@@ -47,6 +47,7 @@ model.gen_poa = Param(model.GENERADORES)
 
 # TECNOLOGIAS
 model.tecnologia_min = Param(model.TECNOLOGIAS)
+
 ###########################################################################
 # SETS FROM PARAMETERS
 ###########################################################################
@@ -78,6 +79,8 @@ model.GEN_PC = Var(model.GENERADORES, within=NonNegativeReals, bounds=bounds_gen
 # CONSTRAINT 1: Inyección maxima por cada PDI´
 def nodal_balance_rule(model, pdi):
 
+    if not model.config_value['restriccion_nodal']:
+        return Constraint.Skip
     lside = sum(model.GEN_PC[g] for g in model.GENERADORES if model.gen_pdi[g] == pdi)
     rside = (model.pdi_max[pdi])
     return lside <= rside
@@ -101,6 +104,16 @@ def gen_pmax_rule(model, g):
     return lside >= rside
 
 model.CT_potencia_maxima = Constraint(model.GENERADORES, rule=gen_pmax_rule)
+
+# CONSTRAINT 4: minimo por tecnologia
+
+def tecnologia_balance_rule(model, tecnologia):
+
+    lside = sum(model.GEN_PC[g] for g in model.GENERADORES if model.gen_tecnologia[g] == tecnologia)
+    rside = (model.tecnologia_min[tecnologia])
+    return lside >= rside
+
+model.CT_tecnologia_balance = Constraint(model.TECNOLOGIAS, rule=tecnologia_balance_rule)
 
 ###########################################################################
 # FUNCION OBJETIVO
