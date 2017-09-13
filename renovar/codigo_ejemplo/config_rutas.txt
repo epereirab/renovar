@@ -1,0 +1,4 @@
+[datos]
+/Users/MPro/Documents/TRABAJO/SPEC/MAINSTREAM/casos_estudio/
+[resultados]
+/Users/MPro/Documents/TRABAJO/SPEC/MAINSTREAM/casos_estudio/resultados_multiple/

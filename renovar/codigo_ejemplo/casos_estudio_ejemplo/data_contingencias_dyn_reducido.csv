@@ -1,0 +1,8 @@
+CONTINGENCIAS,factor_gen_contingencia,centrales_contingencia,factor_lin_contingencia,lineas_contingencia
+N-1 ANG_I,1,[ANG_I],0,[None]
+N-1 ANG_II,1,[ANG_II],0,[None]
+N-1 COCHRANE_1,1,[COCHRANE_1],0,[None]
+N-1 COCHRANE_2,1,[COCHRANE_2],0,[None]
+N-1 Colbun,1,[Colbun],0,[None]
+N-1 Ventanas_01,1,[Ventanas_01],0,[None]
+N-1 Ventanas_02,1,[Ventanas_02],0,[None]

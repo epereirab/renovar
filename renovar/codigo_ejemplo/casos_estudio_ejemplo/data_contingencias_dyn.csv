@@ -1,0 +1,11 @@
+CONTINGENCIAS,factor_gen_contingencia,centrales_contingencia,factor_lin_contingencia,lineas_contingencia
+multiple PV zona norte sing,0.8,"[ex_PV_Tarapaca,Proy_PV_Tarapaca,ex_PV_Lagunas,Proy_PV_Lagunas]",0,[None]
+multiple PV zona sur centro sing,0.8,"[CSP CERRO DOMINADOR,ex_PV_Crucero-Encuentro,Proy_CSP_Crucero-Encuentro,Proy_PV_Crucero-Encuentro,ex_PV_Atacama-Mejillones,Proy_PV_Atacama-Mejillones,ex_PV_Laberinto-Domeyko,Proy_PV_Laberinto-Domeyko]",0,[None]
+multiple PV zona norte del sic,0.8,"[Proy_PV_Paposo,ex_PV_Diego_de_Almagro,Proy_PV_Diego_de_Almagro,ex_PV_Lalackama,Proy_PV_Lalackama,ex_PV_Etaltal,Proy_PV_Etaltal,ex_PV_Cardones,Inca_de_Varas_I_II,Proy_PV_Cardones]",0,[None]
+multiple PV zona norte chico,0.8,"[ex_PV_Maitencillo,Proy_PV_Maitencillo,ex_PV_Punta_Colorada,Proy_PV_Punta_Colorada,ex_PV_Pan_de_Azucar,Proy_PV_Pan_de_Azucar,ex_PV_Los_Vilos,Proy_PV_Los_Vilos]",0,[None]
+multiple PV zona centro,0.8,"[Proy_PV_Nogales,ex_PV_Quillota,Proy_PV_Quillota,ex_PV_Polpaico,GPolpaico,Proy_PV_Polpaico]",0,[None]
+multiple Wind zona sing centro,0.8,"[ex_wind_Crucero-Encuentro,Tchamma,Proy_Wind_Crucero-Encuentro_1]",0,[None]
+multiple Wind zona norte sic,0.8,"[Proy_Wind_Paposo_3,ex_wind_Etaltal,ex_wind_Maitencillo,Proy_Wind_Maitencillo_5]",0,[None]
+multiple Wind zona iv region,0.8,"[ex_wind_Punta_Colorada,ex_wind_Pan_de_Azucar,Proy_Wind_Pan de Azucar_8,ex_wind_Las_Palmas,Proy_Wind_Las Palmas_10,Proy_Wind_Las Palmas_11,ex_wind_Los_Vilos]",0,[None]
+multiple Wind zona viii region,0.8,"[ex_wind_Charrua,Proy_Wind_Charrua_66,Proy_Wind_Charrua_77,Proy_Wind_Charrua_80,ex_wind_Temuco-Cautin,Proy_Wind_Temuco-Cautin_95,Proy_Wind_Temuco-Cautin_98]",0,[None]
+multiple Wind zona sur,0.8,"[ex_wind_Valdivia-Ciruelos,Proy_Wind_Valdivia-Ciruelos_112,Proy_Wind_Valdivia-Ciruelos_118,Proy_Wind_Pichirropulli_119,Proy_Wind_Pichirropulli_125,Proy_Wind_Pichirropulli_128,Proy_Wind_Pichirropulli_131,ex_wind_Puerto_Montt,Proy_Wind_Puerto Montt_146,Proy_Wind_Puerto Montt_157,Proy_Wind_Puerto Montt_166]",0,[None]

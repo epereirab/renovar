@@ -1,0 +1,6 @@
+GENERADOR,gen_disponible,gen_pdi,gen_tecnologia,gen_pmax,gen_pmin,gen_precio
+g1,true,NOA 220,eolica,100,10,1
+g2,true,Baires,solar,200,20,2
+g3,true,neuquen,solar,300,30,3
+g4,true,Baires,biomasa,400,40,4
+g5,false,neuquen,hidro,500,50,5
