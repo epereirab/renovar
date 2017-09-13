@@ -2,3 +2,4 @@ config,config_value
 debugging,true
 restriccion_nodal,false
 restriccion_por_tecnologia,true
+restriccion_por_zona,true

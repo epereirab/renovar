@@ -23,6 +23,8 @@ model.PDI = Set()
 model.GENERADORES = Set()
 # TECNOLOGIAS
 model.TECNOLOGIAS = Set()
+# TECNOLOGIAS
+model.ZONAS = Set()
 
 # CORTES DE BENDERS
 #model.BENDERS = Set(within=PositiveIntegers, ordered=True)
@@ -47,6 +49,11 @@ model.gen_poa = Param(model.GENERADORES)
 
 # TECNOLOGIAS
 model.tecnologia_min = Param(model.TECNOLOGIAS)
+
+# ZONAS
+model.zona_max = Param(model.ZONAS)
+model.zona_tecnologias = Param(model.ZONAS)
+model.zona_barras = Param(model.ZONAS)
 
 ###########################################################################
 # SETS FROM PARAMETERS
@@ -106,7 +113,6 @@ def gen_pmax_rule(model, g):
 model.CT_potencia_maxima = Constraint(model.GENERADORES, rule=gen_pmax_rule)
 
 # CONSTRAINT 4: minimo por tecnologia
-
 def tecnologia_balance_rule(model, tecnologia):
 
     lside = sum(model.GEN_PC[g] for g in model.GENERADORES if model.gen_tecnologia[g] == tecnologia)
@@ -115,6 +121,25 @@ def tecnologia_balance_rule(model, tecnologia):
 
 model.CT_tecnologia_balance = Constraint(model.TECNOLOGIAS, rule=tecnologia_balance_rule)
 
+# CONSTRAINT 4: maximo por zonas
+def zona_max_rule(model, zona):
+
+    if not model.config_value['restriccion_por_zona']:
+        return Constraint.Skip
+    lside = 0
+    formular = False
+    for g in model.GENERADORES:
+
+        if (model.gen_pdi[g] in model.zona_barras[zona]) and (model.gen_tecnologia[g] in model.zona_tecnologias[zona]):
+            lside = lside + model.GEN_PC[g]
+            formular= True
+    rside = model.zona_max[zona]
+
+    if not formular:
+        return Constraint.Skip
+    return lside <= rside
+
+model.CT_zona_max = Constraint(model.ZONAS, rule=zona_max_rule)
 ###########################################################################
 # FUNCION OBJETIVO
 ###########################################################################
