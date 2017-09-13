@@ -59,19 +59,17 @@ model.tecnologia_min = Param(model.TECNOLOGIAS)
 # VARIABLES
 ###########################################################################
 
-# Unit commitment generacion
-#model.GEN_PC = Var(model.GENERADORES,
-#                    within=NonNegativeReals)
+# Unit commitment casacion
+model.GEN_UC = Var(model.GENERADORES, within=Binary)
 
 # Potencia casada del generador g
 def bounds_gen_pg(model, g):
-    ub = round(model.gen_pmax[g],2)
+    ub = round(model.gen_pmax[g], 2)
     if model.gen_disponible[g]:
         return 0, ub
     return 0,0
 
-model.GEN_PC = Var(model.GENERADORES,
-                    within=NonNegativeReals, bounds=bounds_gen_pg)
+model.GEN_PC = Var(model.GENERADORES, within=NonNegativeReals, bounds=bounds_gen_pg)
 
 ###########################################################################
 # CONSTRAINTS
@@ -82,10 +80,27 @@ def nodal_balance_rule(model, pdi):
 
     lside = sum(model.GEN_PC[g] for g in model.GENERADORES if model.gen_pdi[g] == pdi)
     rside = (model.pdi_max[pdi])
-    return lside == rside
+    return lside <= rside
 
 model.CT_nodal_balance = Constraint(model.PDI, rule=nodal_balance_rule)
 
+# CONSTRAINT 2: potencia minima casada  pmin * UC <= PC
+def gen_pmin_rule(model, g):
+
+    rside = model.GEN_PC[g]
+    lside = model.gen_pmin[g] * model.GEN_UC[g]
+    return lside <= rside
+
+model.CT_potencia_minima = Constraint(model.GENERADORES, rule=gen_pmin_rule)
+
+# CONSTRAINT 3: potencia maxima casada  pmax * UC >= PC
+def gen_pmax_rule(model, g):
+
+    rside = model.GEN_PC[g]
+    lside = model.gen_pmax[g] * model.GEN_UC[g]
+    return lside >= rside
+
+model.CT_potencia_maxima = Constraint(model.GENERADORES, rule=gen_pmax_rule)
 
 ###########################################################################
 # FUNCION OBJETIVO
@@ -97,4 +112,4 @@ def system_cost_rule(model):
     return costo_base
 
 
-model.Objective_rule = Objective(rule=system_cost_rule, sense=maximize)
+model.Objective_rule = Objective(rule=system_cost_rule, sense=minimize)
