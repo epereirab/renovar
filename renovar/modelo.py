@@ -92,7 +92,7 @@ model.CT_nodal_balance = Constraint(model.PDI, rule=nodal_balance_rule)
 ###########################################################################
 
 def system_cost_rule(model):
-    costo_base = (sum(model.gen_precio[g] * model.GEN_PC[g] for g in model.GENERADORES))
+    costo_base = (sum(model.gen_poa[g] * model.GEN_PC[g] for g in model.GENERADORES))
 
     return costo_base
 
