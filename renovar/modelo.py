@@ -67,12 +67,12 @@ model.zona_barras = Param(model.ZONAS)
 ###########################################################################
 
 # gen_poa (gen_precio, gen_fppdi, gen_tejecucion, tecnologia_tejecucionmax)
-def poa(model, g):
+def gen_poa(model, g):
     return model.gen_precio[g]*model.pdi_fp[model.gen_pdi[g]] -\
            0,005*(model.tecnologia_tejecucionmax[model.gen_tecnologia[g]]-model.gen_tejecucion[g])
 
-model.poa = Param(model.GENERADORES,
-                    initialize=poa)
+model.gen_poa = Param(model.GENERADORES,
+                    initialize=gen_poa)
 
 ###########################################################################
 # VARIABLES
