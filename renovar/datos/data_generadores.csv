@@ -1,6 +1,13 @@
-GENERADOR,gen_disponible,gen_pdi,gen_tecnologia,gen_pmax,gen_pmin,gen_precio
-g1,true,NOA 220,eolica,100,10,1
-g2,true,Baires,solar,200,20,2
-g3,true,neuquen,solar,300,30,3
-g4,true,Baires,biomasa,400,40,4
-g5,false,neuquen,hidro,500,50,5
+GENERADOR,gen_disponible,gen_pdi,gen_tecnologia,gen_pmax,gen_pmin,gen_poa
+g1,true,NOA 220,eolica,550,275,10
+g2,true,Baires,solar,450,225,11
+g3,true,neuquen,biomasa,100,50,12
+g4,true,Baires,biogas,35,17.5,13
+g5,true,neuquen,biogasRS,15,7.5,14
+g6,true,neuquen,PAH,50,25,15
+g7,true,NOA 220,eolica,550,137.5,16
+g8,true,Baires,solar,450,112.5,17
+g9,true,neuquen,biomasa,100,25,18
+g10,true,Baires,biogas,35,8.75,19
+g11,true,neuquen,biogasRS,15,3.75,20
+g12,true,neuquen,PAH,50,12.5,21

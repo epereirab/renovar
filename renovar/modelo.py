@@ -35,12 +35,13 @@ model.config_value = Param(model.CONFIG)
 model.pdi_max = Param(model.PDI)
 
 # GENERADORES
+
 model.gen_disponible = Param(model.GENERADORES)
 model.gen_pdi = Param(model.GENERADORES)
 model.gen_tecnologia = Param(model.GENERADORES)
 model.gen_pmax = Param(model.GENERADORES)
 model.gen_pmin = Param(model.GENERADORES)
-model.gen_precio = Param(model.GENERADORES)
+model.gen_poa = Param(model.GENERADORES)
 
 
 ###########################################################################
