@@ -1,13 +1,13 @@
-GENERADOR,gen_disponible,gen_pdi,gen_tecnologia,gen_pmax,gen_pmin,gen_precio,gen_fppdi,gen_tejecucion,gen_poa
-g1,true,NOA 220,eolica,440,275,10,1,730,10
-g2,true,Baires,solar,360,225,11,1,730,11
-g3,true,neuquen,biomasa,80,50,12,1,730,12
-g4,true,Baires,biogas,28,17.5,13,1,730,13
-g5,true,neuquen,biogasRS,12,7.5,14,1,730,14
-g6,true,neuquen,PAH,40,25,15,1,730,15
-g7,true,NOA 220,eolica,440,137.5,16,1,730,16
-g8,true,Baires,solar,360,112.5,17,1,730,17
-g9,true,neuquen,biomasa,80,25,18,1,730,18
-g10,true,Baires,biogas,28,8.75,19,1,730,19
-g11,true,neuquen,biogasRS,12,3.75,20,1,730,20
-g12,true,neuquen,PAH,40,12.5,21,1,730,21
+GENERADOR,gen_disponible,gen_pdi,gen_tecnologia,gen_pmax,gen_pmin,gen_precio,gen_tejecucion
+g1,true,NOA 220,eolica,440,275,10,730
+g2,true,Baires,solar,360,225,11,730
+g3,true,neuquen,biomasa,80,50,12,730
+g4,true,Baires,biogas,28,17.5,13,730
+g5,true,neuquen,biogasRS,12,7.5,14,730
+g6,true,neuquen,PAH,40,25,15,730
+g7,true,NOA 220,eolica,440,137.5,16,730
+g8,true,Baires,solar,360,112.5,17,730
+g9,true,neuquen,biomasa,80,25,18,730
+g10,true,Baires,biogas,28,8.75,19,730
+g11,true,neuquen,biogasRS,12,3.75,20,730
+g12,true,neuquen,PAH,40,12.5,21,730

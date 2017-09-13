@@ -37,6 +37,7 @@ model.config_value = Param(model.CONFIG)
 
 # PDI
 model.pdi_max = Param(model.PDI)
+model.pdi_fp = Param(model.PDI)
 
 # GENERADORES
 
@@ -46,9 +47,7 @@ model.gen_tecnologia = Param(model.GENERADORES)
 model.gen_pmax = Param(model.GENERADORES)
 model.gen_pmin = Param(model.GENERADORES)
 model.gen_precio = Param(model.GENERADORES)
-model.gen_fppdi = Param(model.GENERADORES)
 model.gen_tejecucion = Param(model.GENERADORES)
-model.gen_poa = Param(model.GENERADORES)
 
 # TECNOLOGIAS
 model.tecnologia_min = Param(model.TECNOLOGIAS)
@@ -66,6 +65,14 @@ model.zona_barras = Param(model.ZONAS)
 ###########################################################################
 # PARAMETERS FROM PARAMETERS
 ###########################################################################
+
+# gen_poa (gen_precio, gen_fppdi, gen_tejecucion, tecnologia_tejecucionmax)
+def poa(model, g):
+    return model.gen_precio[g]*model.pdi_fp[model.gen_pdi[g]] -\
+           0,005*(model.tecnologia_tejecucionmax[model.gen_tecnologia[g]]-model.gen_tejecucion[g])
+
+model.poa = Param(model.GENERADORES,
+                    initialize=poa)
 
 ###########################################################################
 # VARIABLES
@@ -150,7 +157,7 @@ model.CT_zona_max = Constraint(model.ZONAS, rule=zona_max_rule)
 ###########################################################################
 
 def system_cost_rule(model):
-    costo_base = (sum(model.gen_poa[g] * model.GEN_PC[g] for g in model.GENERADORES))
+    costo_base = (sum(model.gen_precio[g] * model.GEN_PC[g] for g in model.GENERADORES))
 
     return costo_base
 

@@ -1,5 +1,5 @@
 config,config_value
-debugging,true
+debugging,false
 restriccion_nodal,false
 restriccion_por_tecnologia,true
 restriccion_por_zona,true

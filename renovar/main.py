@@ -49,7 +49,7 @@ data_modelo.load(filename=nombre_archivo,
 nombre_archivo=path_datos+'data_pdi.csv'
 print "importando: " + nombre_archivo
 data_modelo.load(filename=nombre_archivo,
-                 param=model.pdi_max,
+                 param=(model.pdi_max, model.pdi_fp),
                  index=model.PDI)
 print 'importacion OK'
 
@@ -57,8 +57,7 @@ nombre_archivo=path_datos+'data_generadores.csv'
 print "importando: " + nombre_archivo
 data_modelo.load(filename=nombre_archivo,
                  param=(model.gen_disponible,model.gen_pdi, model.gen_tecnologia,
-                        model.gen_pmax, model.gen_pmin, model.gen_precio, model.gen_fppdi,
-                        model.gen_tejecucion, model.gen_poa),
+                        model.gen_pmax, model.gen_pmin, model.gen_precio, model.gen_tejecucion),
                  index=model.GENERADORES)
 print 'importacion OK'
 
@@ -82,7 +81,6 @@ print 'importacion OK'
 print ("--- Creando Modelo ---")
 instancia_modelo = model.create_instance(data_modelo)
 
-
 opt = SolverFactory("cplex")
 
 print ("--- Resolviendo la optimizacion ---")
@@ -90,7 +88,6 @@ results_master = opt.solve(instancia_modelo, tee=True)
 
 print ("Modelo Resuelto")
 instancia_modelo.solutions.load_from(results_master)
-
 
 ###########################################################################
 # EXPORTANDO RESULTADOS
