@@ -1,4 +1,4 @@
 [datos]
-/Users/MPro/Documents/TRABAJO/SPEC/MAINSTREAM/renovar/datos/
+./datos/
 [resultados]
-/Users/MPro/Documents/TRABAJO/SPEC/MAINSTREAM/renovar/datos/resultados/
+./datos/resultados/
