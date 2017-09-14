@@ -11,6 +11,11 @@ import sys
 import exporter
 import os
 import csv
+import argparse
+
+parser = argparse.ArgumentParser(description='PARSER para corrida')
+parser.add_argument('-ncaso', default=1)
+args = parser.parse_args()
 
 #  - - - - - - LEER RUTAS DE DATOS Y RESULTADOS  - - - - - - #
 
@@ -56,8 +61,9 @@ print 'importacion OK'
 nombre_archivo = path_datos+'data_generadores.csv'
 print "importando: " + nombre_archivo
 data_modelo.load(filename=nombre_archivo,
-                 param=(model.gen_disponible, model.gen_pdi, model.gen_tecnologia,
-                        model.gen_pmax, model.gen_pmin, model.gen_precio, model.gen_tejecucion),
+                 param=(model.gen_disponible, model.gen_pdi, model.gen_zona, model.gen_tecnologia,
+                        model.gen_pmax, model.gen_pmin, model.gen_precio, model.gen_tejecucion,
+                        model.gen_precio_min, model.gen_precio_max, model.gen_precio_aleatorio),
                  index=model.GENERADORES)
 print 'importacion OK'
 
@@ -97,4 +103,4 @@ instancia_modelo.solutions.load_from(results_master)
 if instancia_modelo.config_value['debugging']:
     exporter.exportar_modelo(instancia_modelo, path_resultados, 'model_after')
 
-exporter.exportar_gen(instancia_modelo, path_resultados, 'generadores.csv')
+exporter.exportar_gen(instancia_modelo, path_resultados, 'generadores_' + str(args.ncaso).zfill(6) + '.csv')

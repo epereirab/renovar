@@ -5,6 +5,7 @@
 # sys.path.insert(0, dirname(dirname(dirname(dirname(abspath(__file__))))))
 #from coopr.pyomo import *
 import math
+import random
 from pyomo.environ import *
 # from coopr.pyomo.base.sparse_indexed_component import *
 # SparseIndexedComponent._DEFAULT_INDEX_CHECKING_ENABLED = False
@@ -43,11 +44,15 @@ model.pdi_fp = Param(model.PDI)
 
 model.gen_disponible = Param(model.GENERADORES)
 model.gen_pdi = Param(model.GENERADORES)
+model.gen_zona = Param(model.GENERADORES)
 model.gen_tecnologia = Param(model.GENERADORES)
 model.gen_pmax = Param(model.GENERADORES)
 model.gen_pmin = Param(model.GENERADORES)
 model.gen_precio = Param(model.GENERADORES)
 model.gen_tejecucion = Param(model.GENERADORES)
+model.gen_precio_min = Param(model.GENERADORES)
+model.gen_precio_max = Param(model.GENERADORES)
+model.gen_precio_aleatorio = Param(model.GENERADORES)
 
 # TECNOLOGIAS
 model.tecnologia_min = Param(model.TECNOLOGIAS)
@@ -68,7 +73,13 @@ model.zona_barras = Param(model.ZONAS)
 
 # gen_poa (gen_precio, gen_fppdi, gen_tejecucion, tecnologia_tejecucionmax)
 def rule_gen_poa(model, g):
-    return model.gen_precio[g]*model.pdi_fp[model.gen_pdi[g]]-0.005*(model.tecnologia_tejecucionmax[model.gen_tecnologia[g]]-model.gen_tejecucion[g])
+    dias_adelanto = (model.tecnologia_tejecucionmax[model.gen_tecnologia[g]]-model.gen_tejecucion[g])
+    if model.config_value['precio_aleatorio']:
+        if not model.gen_precio_aleatorio[g]:
+            return model.gen_precio[g]*model.pdi_fp[model.gen_pdi[g]]-0.005 * dias_adelanto
+        precio_aleatorio = random.randint(model.gen_precio_min[g], model.gen_precio_max[g])
+        return precio_aleatorio*model.pdi_fp[model.gen_pdi[g]]-0.005 * dias_adelanto
+    return model.gen_precio[g] * model.pdi_fp[model.gen_pdi[g]] - 0.005 * dias_adelanto
 
 model.gen_poa = Param(model.GENERADORES,
                     initialize=rule_gen_poa)
@@ -141,7 +152,7 @@ def zona_max_rule(model, zona):
     formular = False
     for g in model.GENERADORES:
 
-        if (model.gen_pdi[g] in model.zona_barras[zona]) and (model.gen_tecnologia[g] in model.zona_tecnologias[zona]):
+        if (model.gen_zona[g] in model.zona_barras[zona]) and (model.gen_tecnologia[g] in model.zona_tecnologias[zona]):
             lside = lside + model.GEN_PC[g]
             formular= True
     rside = model.zona_max[zona]
@@ -156,7 +167,7 @@ model.CT_zona_max = Constraint(model.ZONAS, rule=zona_max_rule)
 ###########################################################################
 
 def system_cost_rule(model):
-    costo_base = (sum(model.gen_poa[g] * model.GEN_PC[g] for g in model.GENERADORES))
+    costo_base = (sum(model.gen_poa[g] * model.GEN_UC[g] for g in model.GENERADORES))
     return costo_base
 
 model.Objective_rule = Objective(rule=system_cost_rule, sense=minimize)

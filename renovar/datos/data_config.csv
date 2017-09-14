@@ -3,3 +3,4 @@ debugging,false
 restriccion_nodal,false
 restriccion_por_tecnologia,true
 restriccion_por_zona,true
+precio_aleatorio,true
