@@ -103,4 +103,4 @@ instancia_modelo.solutions.load_from(results_master)
 if instancia_modelo.config_value['debugging']:
     exporter.exportar_modelo(instancia_modelo, path_resultados, 'model_after')
 
-exporter.exportar_gen(instancia_modelo, path_resultados, 'generadores_' + str(args.ncaso).zfill(6) + '.csv')
+exporter.exportar_gen(instancia_modelo, path_resultados, 'generadores_' + str(args.ncaso).zfill(6) + '.csv',args.ncaso)
