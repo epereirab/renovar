@@ -6,7 +6,7 @@ echo Corridas          = $ARG1
 echo Procesos paralelos= $ARG2
 for i in `seq 1 $ARG1`; do
    echo Corriendo simulacion $i
-   (python main.py > salida.out) &
+   (python main.py -ncaso $i > salida.out) &
    if (( $i % $ARG2 == 0 ));
       then wait;
    fi
