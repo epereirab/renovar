@@ -166,7 +166,7 @@ model.CT_zona_max = Constraint(model.ZONAS, rule=zona_max_rule)
 ###########################################################################
 
 def system_cost_rule(model):
-    costo_base = (sum(model.gen_poa[g] * model.GEN_PC[g] for g in model.GENERADORES))
+    costo_base = (sum(model.gen_poa[g] * model.GEN_UC[g] for g in model.GENERADORES))
     return costo_base
 
 model.Objective_rule = Objective(rule=system_cost_rule, sense=minimize)
