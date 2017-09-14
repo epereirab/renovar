@@ -67,12 +67,11 @@ model.zona_barras = Param(model.ZONAS)
 ###########################################################################
 
 # gen_poa (gen_precio, gen_fppdi, gen_tejecucion, tecnologia_tejecucionmax)
-def gen_poa(model, g):
-    return model.gen_precio[g]*model.pdi_fp[model.gen_pdi[g]] -\
-           0,005*(model.tecnologia_tejecucionmax[model.gen_tecnologia[g]]-model.gen_tejecucion[g])
+def rule_gen_poa(model, g):
+    return model.gen_precio[g]*model.pdi_fp[model.gen_pdi[g]]-0.005*(model.tecnologia_tejecucionmax[model.gen_tecnologia[g]]-model.gen_tejecucion[g])
 
 model.gen_poa = Param(model.GENERADORES,
-                    initialize=gen_poa)
+                    initialize=rule_gen_poa)
 
 ###########################################################################
 # VARIABLES
@@ -157,9 +156,7 @@ model.CT_zona_max = Constraint(model.ZONAS, rule=zona_max_rule)
 ###########################################################################
 
 def system_cost_rule(model):
-    costo_base = (sum(model.gen_precio[g] * model.GEN_PC[g] for g in model.GENERADORES))
-
+    costo_base = (sum(model.gen_poa[g] * model.GEN_PC[g] for g in model.GENERADORES))
     return costo_base
-
 
 model.Objective_rule = Objective(rule=system_cost_rule, sense=minimize)
