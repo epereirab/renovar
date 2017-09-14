@@ -1,11 +1,11 @@
-#from coopr.pyomo import *
-#from coopr.opt import SolverFactory
+# from coopr.pyomo import *
+# from coopr.opt import SolverFactory
 
 from pyomo.environ import *
 from pyomo.opt import SolverFactory
 
 from modelo import model as model
-#from SlaveModel import _model as slave_model
+# from SlaveModel import _model as slave_model
 import cStringIO
 import sys
 import exporter
@@ -40,38 +40,38 @@ print ("--- Leyendo data ---")
 print ("path input:" + path_datos)
 data_modelo = DataPortal()
 
-nombre_archivo=path_datos+'data_config.csv'
+nombre_archivo = path_datos+'data_config.csv'
 print "importando: " + nombre_archivo
 data_modelo.load(filename=nombre_archivo,
                  param=model.config_value,
                  index=model.CONFIG)
 
-nombre_archivo=path_datos+'data_pdi.csv'
+nombre_archivo = path_datos+'data_pdi.csv'
 print "importando: " + nombre_archivo
 data_modelo.load(filename=nombre_archivo,
                  param=(model.pdi_max, model.pdi_fp),
                  index=model.PDI)
 print 'importacion OK'
 
-nombre_archivo=path_datos+'data_generadores.csv'
+nombre_archivo = path_datos+'data_generadores.csv'
 print "importando: " + nombre_archivo
 data_modelo.load(filename=nombre_archivo,
-                 param=(model.gen_disponible,model.gen_pdi, model.gen_tecnologia,
+                 param=(model.gen_disponible, model.gen_pdi, model.gen_tecnologia,
                         model.gen_pmax, model.gen_pmin, model.gen_precio, model.gen_tejecucion),
                  index=model.GENERADORES)
 print 'importacion OK'
 
-nombre_archivo=path_datos+'data_tecnologias.csv'
+nombre_archivo = path_datos+'data_tecnologias.csv'
 print "importando: " + nombre_archivo
 data_modelo.load(filename=nombre_archivo,
                  param=(model.tecnologia_min, model.tecnologia_tejecucionmax),
                  index=model.TECNOLOGIAS)
 print 'importacion OK'
 
-nombre_archivo=path_datos+'data_zonas.csv'
+nombre_archivo = path_datos+'data_zonas.csv'
 print "importando: " + nombre_archivo
 data_modelo.load(filename=nombre_archivo,
-                 param=(model.zona_max,model.zona_tecnologias, model.zona_barras),
+                 param=(model.zona_max, model.zona_tecnologias, model.zona_barras),
                  index=model.ZONAS)
 print 'importacion OK'
 
@@ -93,8 +93,8 @@ instancia_modelo.solutions.load_from(results_master)
 # EXPORTANDO RESULTADOS
 ###########################################################################
 
-#debugging options
+# debugging options
 if instancia_modelo.config_value['debugging']:
-    exporter.exportar_modelo(instancia_modelo, path_resultados,'model_after')
+    exporter.exportar_modelo(instancia_modelo, path_resultados, 'model_after')
 
-exporter.exportar_gen(instancia_modelo, path_resultados,'generadores.csv')
+exporter.exportar_gen(instancia_modelo, path_resultados, 'generadores.csv')

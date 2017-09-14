@@ -1,4 +1,4 @@
-BARRAS,pdi_max
-NOA 220,1000
-Baires,1000
-neuquen,1000
+BARRAS,pdi_max,fp
+NOA 220,1000,1
+Baires,1000,1
+neuquen,1000,1
