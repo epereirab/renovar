@@ -44,6 +44,7 @@ model.pdi_fp = Param(model.PDI)
 
 model.gen_disponible = Param(model.GENERADORES)
 model.gen_pdi = Param(model.GENERADORES)
+model.gen_zona = Param(model.GENERADORES)
 model.gen_tecnologia = Param(model.GENERADORES)
 model.gen_pmax = Param(model.GENERADORES)
 model.gen_pmin = Param(model.GENERADORES)
@@ -151,7 +152,7 @@ def zona_max_rule(model, zona):
     formular = False
     for g in model.GENERADORES:
 
-        if (model.gen_pdi[g] in model.zona_barras[zona]) and (model.gen_tecnologia[g] in model.zona_tecnologias[zona]):
+        if (model.gen_zona[g] in model.zona_barras[zona]) and (model.gen_tecnologia[g] in model.zona_tecnologias[zona]):
             lside = lside + model.GEN_PC[g]
             formular= True
     rside = model.zona_max[zona]
