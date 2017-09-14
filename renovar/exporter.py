@@ -17,20 +17,20 @@ def exportar_modelo(model, path, nombre_archivo):
     output.close()
 
 
-def exportar_gen(model, path, nombre_archivo):
+def exportar_gen(model, path, nombre_archivo, ncaso):
     """ Resultados de Generadores """
     gen = model.GENERADORES
     ofile = open(path + nombre_archivo, "wb")
     writer = csv.writer(ofile, delimiter=',', quoting=csv.QUOTE_NONE)
 
     # header
-    header = ['Generador', 'tecnologia', 'pmax', 'poa','PC']
+    header = ['ncaso','Generador', 'tecnologia', 'pmax', 'poa','PC']
 
     writer.writerow(header)
 
     for g in gen:
         tmprow = []
-
+        tmprow.append(ncaso)
         tmprow.append(g)
         tmprow.append(model.gen_tecnologia[g])
         tmprow.append(model.gen_pmax[g])
