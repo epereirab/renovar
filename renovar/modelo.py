@@ -53,6 +53,7 @@ model.gen_tejecucion = Param(model.GENERADORES)
 model.gen_precio_min = Param(model.GENERADORES)
 model.gen_precio_max = Param(model.GENERADORES)
 model.gen_precio_aleatorio = Param(model.GENERADORES)
+model.gen_precio_distribucion = Param(model.GENERADORES)
 
 # TECNOLOGIAS
 model.tecnologia_min = Param(model.TECNOLOGIAS)
@@ -74,10 +75,16 @@ model.zona_barras = Param(model.ZONAS)
 # gen_poa (gen_precio, gen_fppdi, gen_tejecucion, tecnologia_tejecucionmax)
 def rule_gen_poa(model, g):
     dias_adelanto = (model.tecnologia_tejecucionmax[model.gen_tecnologia[g]]-model.gen_tejecucion[g])
+
     if model.config_value['precio_aleatorio']:
+
         if not model.gen_precio_aleatorio[g]:
             return model.gen_precio[g]*model.pdi_fp[model.gen_pdi[g]]-0.005 * dias_adelanto
-        precio_aleatorio = random.randint(model.gen_precio_min[g], model.gen_precio_max[g])
+        distribucion = model.gen_precio_distribucion[g]
+        if distribucion == 'normal':
+            precio_aleatorio = random.normalvariate(model.gen_precio_min[g], model.gen_precio_max[g])
+        else:
+            precio_aleatorio = random.randint(model.gen_precio_min[g], model.gen_precio_max[g])
         return precio_aleatorio*model.pdi_fp[model.gen_pdi[g]]-0.005 * dias_adelanto
     return model.gen_precio[g] * model.pdi_fp[model.gen_pdi[g]] - 0.005 * dias_adelanto
 
