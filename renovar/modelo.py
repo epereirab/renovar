@@ -50,8 +50,8 @@ model.gen_pmax = Param(model.GENERADORES)
 model.gen_pmin = Param(model.GENERADORES)
 model.gen_precio = Param(model.GENERADORES)
 model.gen_tejecucion = Param(model.GENERADORES)
-model.gen_precio_min = Param(model.GENERADORES)
-model.gen_precio_max = Param(model.GENERADORES)
+model.gen_precio_a = Param(model.GENERADORES)
+model.gen_precio_b = Param(model.GENERADORES)
 model.gen_precio_aleatorio = Param(model.GENERADORES)
 model.gen_precio_distribucion = Param(model.GENERADORES)
 
@@ -80,13 +80,13 @@ def rule_gen_poa(model, g):
             return model.gen_precio[g]*model.pdi_fp[model.gen_pdi[g]]-0.005 * dias_adelanto
         distribucion = model.gen_precio_distribucion[g]
         if distribucion == 'normal':
-            precio_aleatorio = round(random.gauss(model.gen_precio_min[g], model.gen_precio_max[g]),2)
+            precio_aleatorio = round(random.gauss(model.gen_precio_a[g], model.gen_precio_b[g]),2)
         elif distribucion == 'pareto':
-            precio_aleatorio = model.gen_precio[g]+round(random.paretovariate(model.gen_precio_min[g]),2)
+            precio_aleatorio = model.gen_precio[g]+round(random.paretovariate(model.gen_precio_a[g]),2)
         elif distribucion == 'triangular':
-            precio_aleatorio = round(random.triangular(model.gen_precio_min[g], model.gen_precio_max[g], model.gen_precio[g]),2)
+            precio_aleatorio = round(random.triangular(model.gen_precio_a[g], model.gen_precio_b[g], model.gen_precio[g]),2)
         else:
-            precio_aleatorio = round(random.uniform(model.gen_precio_min[g], model.gen_precio_max[g]),2)
+            precio_aleatorio = round(random.uniform(model.gen_precio_a[g], model.gen_precio_b[g]),2)
         return precio_aleatorio*model.pdi_fp[model.gen_pdi[g]]-0.005 * dias_adelanto
     return model.gen_precio[g] * model.pdi_fp[model.gen_pdi[g]] - 0.005 * dias_adelanto
 
@@ -126,7 +126,8 @@ model.CT_nodal_balance = Constraint(model.PDI, rule=nodal_balance_rule)
 
 # CONSTRAINT 2: potencia minima casada  pmin * UC <= PC
 def gen_pmin_rule(model, g):
-
+    if not model.config_value['restriccion_minimo']:
+        return Constraint.Skip
     rside = model.GEN_PC[g]
     lside = model.gen_pmin[g] * model.GEN_UC[g]
     return lside <= rside
@@ -180,7 +181,7 @@ model.CT_zona_max = Constraint(model.ZONAS, rule=zona_max_rule)
 ###########################################################################
 
 def system_cost_rule(model):
-    costo_base = (sum(model.gen_poa[g] * model.GEN_UC[g] for g in model.GENERADORES))
+    costo_base = (sum(model.gen_poa[g] * model.GEN_PC[g] for g in model.GENERADORES))
     return costo_base
 
 model.Objective_rule = Objective(rule=system_cost_rule, sense=minimize)

@@ -1,4 +1,4 @@
-GENERADOR,gen_disponible,gen_pdi,gen_zona,gen_tecnologia,gen_pmax,gen_pmin,gen_precio,gen_tejecucion,gen_precio_min,gen_precio_max,gen_precio_aleatorio,gen_precio_distribucion
+GENERADOR,gen_disponible,gen_pdi,gen_zona,gen_tecnologia,gen_pmax,gen_pmin,gen_precio,gen_tejecucion,gen_precio_a,gen_precio_b,gen_precio_aleatorio,gen_precio_distribucion
 g1,true,pdi_1,COMAHUE,eolica,100,70,54.88,750,54.88,0.6,true,normal
 g2,true,pdi_1,COMAHUE,eolica,36.75,25.725,49.98,670,49.98,0.6,true,normal
 g3,true,pdi_1,COMAHUE,eolica,50,35,59,573,59,0.6,true,normal
