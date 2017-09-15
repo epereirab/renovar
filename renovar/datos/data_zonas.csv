@@ -1,3 +1,7 @@
 CONTINGENCIAS,zona_max,zona_tecnologia,zona_barras
-zona 1,100000,"[solar,eolica]","[NOA 220]"
-zona 2,100000,[eolica],"[neuquen,Baires]"
+COMAHUE,100000,[eolica],[pdi_1]
+PATAGONIA,100000,[eolica],[pdi_2]
+BUENOS AIRES,100000,[eolica],[pdi_3]
+RESTO EOLICA,100000,[eolica],[pdi_4]
+NOA,100000,[solar],[pdi_5]
+RESTO SOLAR,100000,[solar],[pdi_6]

@@ -143,12 +143,16 @@ def gen_pmax_rule(model, g):
 model.CT_potencia_maxima = Constraint(model.GENERADORES, rule=gen_pmax_rule)
 
 # CONSTRAINT 4: minimo por tecnologia
+
+
 def tecnologia_balance_rule(model, tecnologia):
+
     if not model.config_value['restriccion_por_tecnologia']:
         return Constraint.Skip
-    lside = sum(model.GEN_PC[g] for g in model.GENERADORES if model.gen_tecnologia[g] == tecnologia)
     rside = (model.tecnologia_min[tecnologia])
-    return lside >= rside
+    lside = sum(model.GEN_PC[g] for g in model.GENERADORES if model.gen_tecnologia[g] in tecnologia)
+
+    return lside == rside
 
 model.CT_tecnologia_balance = Constraint(model.TECNOLOGIAS, rule=tecnologia_balance_rule)
 
