@@ -1,7 +1,7 @@
 CONTINGENCIAS,zona_max,zona_tecnologia,zona_barras
-COMAHUE,100000,[eolica],[pdi_1]
-PATAGONIA,100000,[eolica],[pdi_2]
-BUENOS AIRES,100000,[eolica],[pdi_3]
-RESTO EOLICA,100000,[eolica],[pdi_4]
-NOA,100000,[solar],[pdi_5]
-RESTO SOLAR,100000,[solar],[pdi_6]
+COMAHUE,250,[eolica],[pdi_1]
+PATAGONIA,250,[eolica],[pdi_2]
+BUENOS AIRES,250,[eolica],[pdi_3]
+RESTO EOLICA,250,[eolica],[pdi_4]
+NOA,250,[solar],[pdi_5]
+RESTO SOLAR,250,[solar],[pdi_6]

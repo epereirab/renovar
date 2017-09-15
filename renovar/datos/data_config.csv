@@ -2,6 +2,6 @@ config,config_value
 debugging,false
 restriccion_nodal,true
 restriccion_por_tecnologia,true
-restriccion_por_zona,true
+restriccion_por_zona,false
 precio_aleatorio,true
-restriccion_minimo,true
+restriccion_minimo,false

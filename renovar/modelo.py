@@ -165,14 +165,13 @@ def zona_max_rule(model, zona):
     lside = 0
     formular = False
     for g in model.GENERADORES:
-
-        if (model.gen_zona[g] in model.zona_barras[zona]) and (model.gen_tecnologia[g] in model.zona_tecnologias[zona]):
+        if (model.gen_zona[g] == zona) and (model.gen_tecnologia[g] in model.zona_tecnologias[zona]):
             lside = lside + model.GEN_PC[g]
             formular= True
     rside = model.zona_max[zona]
 
-    if not formular:
-        return Constraint.Skip
+    # if not formular:
+    #     return Constraint.Skip
     return lside <= rside
 
 model.CT_zona_max = Constraint(model.ZONAS, rule=zona_max_rule)

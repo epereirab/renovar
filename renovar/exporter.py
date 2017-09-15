@@ -24,7 +24,7 @@ def exportar_gen(model, path, nombre_archivo, ncaso):
     writer = csv.writer(ofile, delimiter=',', quoting=csv.QUOTE_NONE)
 
     # header
-    header = ['ncaso','Generador', 'tecnologia', 'pmax', 'poa','PC']
+    header = ['ncaso','Generador', 'tecnologia','zona','pdi', 'pmax', 'poa','PC','UC']
 
     writer.writerow(header)
 
@@ -33,9 +33,12 @@ def exportar_gen(model, path, nombre_archivo, ncaso):
         tmprow.append(ncaso)
         tmprow.append(g)
         tmprow.append(model.gen_tecnologia[g])
+        tmprow.append(model.gen_zona[g])
+        tmprow.append(model.gen_pdi[g])
         tmprow.append(model.gen_pmax[g])
         tmprow.append(model.gen_poa[g])
         tmprow.append(model.GEN_PC[g].value)
+        tmprow.append(model.GEN_UC[g].value)
 
         writer.writerow(tmprow)
 

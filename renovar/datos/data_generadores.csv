@@ -1,47 +1,47 @@
 GENERADOR,gen_disponible,gen_pdi,gen_zona,gen_tecnologia,gen_pmax,gen_pmin,gen_precio,gen_tejecucion,gen_precio_a,gen_precio_b,gen_precio_aleatorio,gen_precio_distribucion
-g1,true,pdi_1,COMAHUE,eolica,100,70,54.88,750,54.88,0.6,true,normal
-g2,true,pdi_1,COMAHUE,eolica,36.75,25.725,49.98,670,49.98,0.6,true,normal
-g3,true,pdi_1,COMAHUE,eolica,50,35,59,573,59,0.6,true,normal
-g4,true,pdi_2,PATAGONIA,eolica,97.2,68.04,58.9,649,58.9,0.6,true,normal
-g5,true,pdi_2,PATAGONIA,eolica,100,70,49.5,640,49.5,0.6,true,normal
-g6,true,pdi_2,PATAGONIA,eolica,100,70,53.53,810,53.53,0.6,true,normal
-g7,true,pdi_2,PATAGONIA,eolica,100,70,53.55,810,53.55,0.6,true,normal
-g8,true,pdi_2,PATAGONIA,eolica,100,70,52,667,52,0.6,true,normal
-g9,true,pdi_3,BUENOS AIRES,eolica,99,0,57.89,690,57.88,60.89,true,triangular
-g10,true,pdi_3,BUENOS AIRES,eolica,99,69.3,55.49,640,55.48,58.49,true,triangular
-g11,true,pdi_3,BUENOS AIRES,eolica,96,67.2,52.19,707,52.18,55.19,true,triangular
-g12,true,pdi_3,BUENOS AIRES,eolica,97.65,68.355,56.38,698,56.37,59.38,true,triangular
-g13,true,pdi_3,BUENOS AIRES,eolica,50,35,56,490,55.99,59,true,triangular
-g14,true,pdi_3,BUENOS AIRES,eolica,100,70,46,465,45.99,49,true,triangular
-g15,true,pdi_3,BUENOS AIRES,eolica,37.95,26.565,54.96,750,54.95,57.96,true,triangular
-g16,true,pdi_3,BUENOS AIRES,eolica,100,70,52.7,900,52.69,55.7,true,triangular
-g17,true,pdi_4,RESTO EOLICA,eolica,50,35,55,900,54.99,58,true,triangular
-g18,true,pdi_4,RESTO EOLICA,eolica,48,33.6,59.38,496,59.37,62.38,true,triangular
-g19,true,pdi_4,RESTO EOLICA,eolica,95,66.5,56.67,900,56.66,59.67,true,triangular
-g20,true,pdi_5,NOA,solar,50,35,55.98,400,55.98,0.6,true,normal
-g21,true,pdi_5,NOA,solar,80,56,56.28,540,56.28,0.6,true,normal
-g22,true,pdi_5,NOA,solar,35,24.5,56.43,540,56.43,0.6,true,normal
-g23,true,pdi_5,NOA,solar,11,7.7,53.73,480,53.73,0.6,true,normal
-g24,true,pdi_5,NOA,solar,15,10.5,53.43,480,53.43,0.6,true,normal
-g25,true,pdi_5,NOA,solar,22.5,15.75,51.93,480,51.93,0.6,true,normal
-g26,true,pdi_5,NOA,solar,30.8,21.56,57.43,480,57.43,0.6,true,normal
-g27,true,pdi_5,NOA,solar,50,0,58.45,426,58.45,0.6,true,normal
-g28,true,pdi_5,NOA,solar,100,70,57.77,510,57.77,0.6,true,normal
-g29,true,pdi_6,RESTO SOLAR,solar,17.6,12.32,55,900,55,0.6,true,normal
-g30,true,pdi_6,RESTO SOLAR,solar,22,15.4,55,900,55,0.6,true,normal
-g31,true,pdi_6,RESTO SOLAR,solar,14.08,9.856,55,900,55,0.6,true,normal
-g32,true,pdi_6,RESTO SOLAR,solar,1.15,0.805,52,360,52,0.6,true,normal
-g33,true,pdi_6,RESTO SOLAR,solar,17.6,12.32,55,900,55,0.6,true,normal
-g34,true,pdi_6,RESTO SOLAR,solar,30,21,57.66,361,57.66,0.6,true,normal
-g35,true,pdi_6,RESTO SOLAR,solar,35,24.5,52.95,473,52.95,0.6,true,normal
-g36,true,pdi_6,RESTO SOLAR,solar,36.5,25.55,57.63,540,57.63,0.6,true,normal
-g37,true,pdi_6,RESTO SOLAR,solar,21.3,14.91,48,574,48,0.6,true,normal
-g38,true,pdi_6,RESTO SOLAR,solar,24.75,17.325,58.9,380,58.9,0.6,true,normal
-g39,true,pdi_6,RESTO SOLAR,solar,20,14,56.5,630,56.5,0.6,true,normal
-g40,true,pdi_6,RESTO SOLAR,solar,22,15.4,56.7,475,56.7,0.6,true,normal
-g41,true,pdi_6,RESTO SOLAR,solar,25,17.5,55.23,540,55.23,0.6,true,normal
-g42,true,pdi_6,RESTO SOLAR,solar,25,17.5,53.73,540,53.73,0.6,true,normal
-g43,true,pdi_6,RESTO SOLAR,solar,80,56,53.6,487,53.6,0.6,true,normal
-g44,true,pdi_6,RESTO SOLAR,solar,1.7,1.19,59.2,360,59.2,0.6,true,normal
-g45,true,pdi_6,RESTO SOLAR,solar,100,70,57.77,510,57.77,0.6,true,normal
+P.E. Pomona I,true,pdi_1,COMAHUE,eolica,100,70,54.88,750,54.88,0.6,true,normal
+P.E. La Banderita,true,pdi_1,COMAHUE,eolica,36.75,25.725,49.98,670,49.98,0.6,true,normal
+P.E. O´Connor,true,pdi_1,COMAHUE,eolica,50,35,59,573,59,0.6,true,normal
+P.E. Viento Austral,true,pdi_2,PATAGONIA,eolica,97.2,68.04,58.9,649,58.9,0.6,true,normal
+P.E. Del Bicentenario,true,pdi_2,PATAGONIA,eolica,100,70,49.5,640,49.5,0.6,true,normal
+P.E. Loma blanca 6,true,pdi_2,PATAGONIA,eolica,100,70,53.53,810,53.53,0.6,true,normal
+P.E. Loma blanca 5,true,pdi_2,PATAGONIA,eolica,100,70,53.55,810,53.55,0.6,true,normal
+P.E. La Deseada,true,pdi_2,PATAGONIA,eolica,100,70,52,667,52,0.6,true,normal
+P.E. Vientos Bajo Hondo,true,pdi_3,BUENOS AIRES,eolica,99,69.3,57.89,690,57.88,60.89,true,triangular
+P.E. Vientos Bajo Hondo I,true,pdi_3,BUENOS AIRES,eolica,99,69.3,55.49,640,55.48,58.49,true,triangular
+P.E. Bahía Blanca,true,pdi_3,BUENOS AIRES,eolica,96,67.2,52.19,707,52.18,55.19,true,triangular
+P.E. Miramar,true,pdi_3,BUENOS AIRES,eolica,97.65,68.355,56.38,698,56.37,59.38,true,triangular
+P.E. De La Bahía,true,pdi_3,BUENOS AIRES,eolica,50,35,56,490,55.99,59,true,triangular
+P.E. Pampa,true,pdi_3,BUENOS AIRES,eolica,100,70,46,465,45.99,49,true,triangular
+P.E. Vientos de Necochea 1,true,pdi_3,BUENOS AIRES,eolica,37.95,26.565,54.96,750,54.95,57.96,true,triangular
+P.E. Wayra II,true,pdi_3,BUENOS AIRES,eolica,100,70,52.7,900,52.69,55.7,true,triangular
+P.E. El Sosneado,true,pdi_4,RESTO EOLICA,eolica,50,35,55,900,54.99,58,true,triangular
+P.E. Achiras,true,pdi_4,RESTO EOLICA,eolica,48,33.6,59.38,496,59.37,62.38,true,triangular
+P.E. Arauco II (Etapa 3 y 4),true,pdi_4,RESTO EOLICA,eolica,95,66.5,56.67,900,56.66,59.67,true,triangular
+P.S. Arauco,true,pdi_5,NOA,solar,50,35,55.98,400,55.98,0.6,true,normal
+P.S. Cafayate,true,pdi_5,NOA,solar,80,56,56.28,540,56.28,0.6,true,normal
+P.S. Nonogasta,true,pdi_5,NOA,solar,35,24.5,56.43,540,56.43,0.6,true,normal
+P.S. Fiambalá,true,pdi_5,NOA,solar,11,7.7,53.73,480,53.73,0.6,true,normal
+P.S. Tinogasta,true,pdi_5,NOA,solar,15,10.5,53.43,480,53.43,0.6,true,normal
+P.S. Saujil,true,pdi_5,NOA,solar,22.5,15.75,51.93,480,51.93,0.6,true,normal
+P.S. Andalgalá,true,pdi_5,NOA,solar,30.8,21.56,57.43,480,57.43,0.6,true,normal
+P.S. Cafayate,true,pdi_5,NOA,solar,50,35,58.45,426,58.45,0.6,true,normal
+P.S. Andalgalá,true,pdi_5,NOA,solar,100,70,57.77,510,57.77,0.6,true,normal
+P.S. Lavalle,true,pdi_6,RESTO SOLAR,solar,17.6,12.32,55,900,55,0.6,true,normal
+P.S. Lujan de Cuyo,true,pdi_6,RESTO SOLAR,solar,22,15.4,55,900,55,0.6,true,normal
+P.S. La Paz,true,pdi_6,RESTO SOLAR,solar,14.08,9.856,55,900,55,0.6,true,normal
+P.S. PASIP,true,pdi_6,RESTO SOLAR,solar,1.15,0.805,52,360,52,0.6,true,normal
+P.S. General Alvear,true,pdi_6,RESTO SOLAR,solar,17.6,12.32,55,900,55,0.6,true,normal
+P.S. Algarrobito,true,pdi_6,RESTO SOLAR,solar,30,21,57.66,361,57.66,0.6,true,normal
+P.S. Sarmiento,true,pdi_6,RESTO SOLAR,solar,35,24.5,52.95,473,52.95,0.6,true,normal
+P.S. Ullum3,true,pdi_6,RESTO SOLAR,solar,36.5,25.55,57.63,540,57.63,0.6,true,normal
+P.S. Anchoris,true,pdi_6,RESTO SOLAR,solar,21.3,14.91,48,574,48,0.6,true,normal
+P.S. Caldenes del Oeste,true,pdi_6,RESTO SOLAR,solar,24.75,17.325,58.9,380,58.9,0.6,true,normal
+P.S. Ullum 4,true,pdi_6,RESTO SOLAR,solar,20,14,56.5,630,56.5,0.6,true,normal
+P.S. La Cumbre,true,pdi_6,RESTO SOLAR,solar,22,15.4,56.7,475,56.7,0.6,true,normal
+P.S. Ullum N2,true,pdi_6,RESTO SOLAR,solar,25,17.5,55.23,540,55.23,0.6,true,normal
+P.S. Ullum N1,true,pdi_6,RESTO SOLAR,solar,25,17.5,53.73,540,53.73,0.6,true,normal
+P.S. Iglesia - Guañizuli,true,pdi_6,RESTO SOLAR,solar,80,56,53.6,487,53.6,0.6,true,normal
+P.S. Las Lomitas,true,pdi_6,RESTO SOLAR,solar,1.7,1.19,59.2,360,59.2,0.6,true,normal
+P.S. Ullum X,true,pdi_6,RESTO SOLAR,solar,100,70,57.77,510,57.77,0.6,true,normal
 mainstream,true,pdi_1,COMAHUE,eolica,100,70,56,510,56,0.6,false,normal
