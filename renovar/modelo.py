@@ -109,6 +109,13 @@ def bounds_gen_pg(model, g):
 
 model.GEN_PC = Var(model.GENERADORES, within=NonNegativeReals, bounds=bounds_gen_pg)
 
+# Variable de holgura casación por tecnologia
+def bounds_vh_tech(model, tecnologia):
+    ub = (model.tecnologia_min[tecnologia])
+    return 0, ub
+
+model.VH_TECH = Var(model.TECNOLOGIAS, within=NonNegativeReals, bounds=bounds_vh_tech)
+
 ###########################################################################
 # CONSTRAINTS
 ###########################################################################
@@ -150,7 +157,7 @@ def tecnologia_balance_rule(model, tecnologia):
 
     if not model.config_value['restriccion_por_tecnologia']:
         return Constraint.Skip
-    rside = (model.tecnologia_min[tecnologia])
+    rside = (model.tecnologia_min[tecnologia] - model.VH_TECH[tecnologia])
     lside = sum(model.GEN_PC[g] for g in model.GENERADORES if model.gen_tecnologia[g] in tecnologia)
 
     return lside == rside
@@ -181,6 +188,7 @@ model.CT_zona_max = Constraint(model.ZONAS, rule=zona_max_rule)
 
 def system_cost_rule(model):
     costo_base = (sum(model.gen_poa[g] * model.GEN_PC[g] for g in model.GENERADORES))
+    costo_base += sum(10000*model.VH_TECH[tecnologia] for tecnologia in model.TECNOLOGIAS)
     return costo_base
 
 model.Objective_rule = Objective(rule=system_cost_rule, sense=minimize)
