@@ -1,32 +1,47 @@
 # Descripción del modelo y parámetros
 ## Data Config
-- debugging (genera archivos LP)
-- restriccion_nodal (considerar restricción por pdi)
-- restriccion_por_tecnologia (considerar restricción de minimo por tecnologia)
-- restriccion_por_zona (cosiderar restricción por zona)
-- precio_aleatorio (considerar parámetro de precio aleatorio por generador)
-- restriccion_minimo (cosiderar parámetro de minimo por generador)
+- Debugging (genera archivos LP)
+- Restriccion_nodal (considerar restricción por pdi)
+- Restriccion_por_tecnologia (considerar restricción de minimo por tecnologia)
+- Restriccion_por_zona (cosiderar restricción por zona)
+- Precio_aleatorio (considerar parámetro de precio aleatorio por generador)
+- Restriccion_minimo (cosiderar parámetro de minimo por generador)
 
 ## Generadores
-- nombre
-- disponible (true o false)
-- pdi (punto de interconexión)
-- región o zona
-- tecnología 
-- pmax
-- pin
-- precio oferta
-- tiempo de ejecución
-- precio_a (parametro a)
-- precio_b (parámetro b)
-- precio aleatorio (true o false)
-- distribución de probabilidad de la oferta:
-  - distribución normal -> normal 
-    - parámetro a = mean, b = standard deviation
-  - distribución de pareto -> pareto
-    - parámetro a = shape
-  - distribución triangular -> triangular
-    - parámetro a = low bound, b = high bound, precio oferta = mode
-  - distribucion por defecto: uniforme
-    - parametro a = low bound, b = high bound
+- Nombre
+- Disponible (true o false)
+- Pdi (punto de interconexión)
+- Región o zona
+- Tecnología 
+- Pmax
+- Pmin
+- Precio oferta
+- Tiempo de ejecución
+- Precio_a (parametro a)
+- Precio_b (parámetro b)
+- Precio aleatorio (true o false)
+- Distribución de probabilidad de la oferta:
+ 
+  | Distribución | Parámetro a | Parámetro b |
+  |--------------|-------------|-------------|
+  | normal       | mean        |     sd      |
+  | pareto       | shape       |     -       |
+  | triangular   | low bound   | high bound  |
+  | uniforme     | low bound   | high bound  |
   
+## Tecnologias
+- Tipo (ej: eólica, solar)
+- potencia mínima restricción por tecnología
+- tiempo de ejecución máximo por tecnología
+- precio máximo de oferta por tecnología
+
+## Zonas
+- Nombre
+- potencia máxima restricción por zona
+- tecnologías que involucra la zona (puede ser más de una)
+- puntos de interconexión pertenecientes a la zona
+
+## Pdi
+- Nombre
+- Potencia máxima de inyección en pdi
+- Factor de pérdidas asociado al pdi
