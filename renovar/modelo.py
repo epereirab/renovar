@@ -58,6 +58,7 @@ model.gen_precio_distribucion = Param(model.GENERADORES)
 # TECNOLOGIAS
 model.tecnologia_min = Param(model.TECNOLOGIAS)
 model.tecnologia_tejecucionmax = Param(model.TECNOLOGIAS)
+model.tecnologia_preciomax = Param(model.TECNOLOGIAS)
 
 # ZONAS
 model.zona_max = Param(model.ZONAS)
@@ -152,7 +153,6 @@ model.CT_potencia_maxima = Constraint(model.GENERADORES, rule=gen_pmax_rule)
 
 # CONSTRAINT 4: minimo por tecnologia
 
-
 def tecnologia_balance_rule(model, tecnologia):
 
     if not model.config_value['restriccion_por_tecnologia']:
@@ -188,7 +188,7 @@ model.CT_zona_max = Constraint(model.ZONAS, rule=zona_max_rule)
 
 def system_cost_rule(model):
     costo_base = (sum(model.gen_poa[g] * model.GEN_PC[g] for g in model.GENERADORES))
-    costo_base += sum(10000*model.VH_TECH[tecnologia] for tecnologia in model.TECNOLOGIAS)
+    costo_base += sum(model.tecnologia_preciomax[tecnologia]*model.VH_TECH[tecnologia] for tecnologia in model.TECNOLOGIAS)
     return costo_base
 
 model.Objective_rule = Objective(rule=system_cost_rule, sense=minimize)
