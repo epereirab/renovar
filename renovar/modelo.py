@@ -126,8 +126,16 @@ def nodal_balance_rule(model, pdi):
 
     if not model.config_value['restriccion_nodal']:
         return Constraint.Skip
-    lside = sum(model.GEN_PC[g] for g in model.GENERADORES if model.gen_pdi[g] == pdi)
+    formular = False
+    lside = 0
+    # lside = sum(model.GEN_PC[g] for g in model.GENERADORES if model.gen_pdi[g] == pdi)
+    for g in model.GENERADORES:
+        if model.gen_pdi[g] == pdi:
+            lside += model.GEN_PC[g]
+            formular = True
     rside = (model.pdi_max[pdi])
+    if not formular:
+        return Constraint.Skip
     return lside <= rside
 
 model.CT_nodal_balance = Constraint(model.PDI, rule=nodal_balance_rule)
@@ -173,12 +181,11 @@ def zona_max_rule(model, zona):
     formular = False
     for g in model.GENERADORES:
         if (model.gen_zona[g] == zona) and (model.gen_tecnologia[g] in model.zona_tecnologias[zona]):
-            lside = lside + model.GEN_PC[g]
+            lside += model.GEN_PC[g]
             formular= True
     rside = model.zona_max[zona]
-
-    # if not formular:
-    #     return Constraint.Skip
+    if not formular:
+        return Constraint.Skip
     return lside <= rside
 
 model.CT_zona_max = Constraint(model.ZONAS, rule=zona_max_rule)
