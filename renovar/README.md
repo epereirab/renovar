@@ -1,6 +1,13 @@
 # Descripción del modelo y parámetros
-## Parámetros modelo
-Generadores:
+## Data Config
+- debugging (genera archivos LP)
+- restriccion_nodal (considerar restricción por pdi)
+- restriccion_por_tecnologia (considerar restricción de minimo por tecnologia)
+- restriccion_por_zona (cosiderar restricción por zona)
+- precio_aleatorio (considerar parámetro de precio aleatorio por generador)
+- restriccion_minimo (cosiderar parámetro de minimo por generador)
+
+## Generadores
 - nombre
 - disponible (true o false)
 - pdi (punto de interconexión)
