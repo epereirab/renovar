@@ -54,7 +54,7 @@
 ## Modelo matemático
 
 ### Función objetivo
-min z = suma(POA(g) x U(g)).
+min z = suma(POA(g) x P(g)).
 
 Donde:
 + POA(g)	: precio ofertado considerando factor pérdida PDI y el tiempo de construcción.
