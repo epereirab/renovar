@@ -28,7 +28,7 @@
 <center>
  
 | Distribución | Parámetro a | Parámetro b |
-|--------------|-------------|-------------|
+|:------------:|:-----------:|:-----------:|
 | normal       | mean        |     sd      |
 | pareto       | shape       |     -       |
 | triangular   | low bound   | high bound  |
@@ -53,4 +53,17 @@
 
 ## Modelo matemático
 
-asdf
+### Función objetivo
+min z = suma(POA(g) x U(g)).
+
+Donde:
++ POA(g)	: precio ofertado considerando factor pérdida PDI y el tiempo de construcción.
++ U(g)	: variable binaria de adjudicación
+
+### Restricciones
++ Potencia máxima adjudicable por tecnología.
++ Potencia máxima adjudicable por zona/tecnología
++ Potencia máxima adjudicable por PDI
++ Potencia máxima y mínima de adjudicación por proyecto.
+
+
