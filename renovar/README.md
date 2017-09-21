@@ -1,7 +1,7 @@
 # Documentación
-------
+
 ## Datos de entrada/ Archivos de parámetros
-------
+
 ### Data Config
 + Debugging (genera archivos LP)
 + Restriccion_nodal (considerar restricción por pdi)
@@ -50,7 +50,7 @@
 - Nombre
 - Potencia máxima de inyección en pdi
 - Factor de pérdidas asociado al pdi
-------
+
 ## Modelo matemático
-------
+
 asdf
