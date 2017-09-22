@@ -1,31 +1,37 @@
 # Documentación
-
+En el presente documento se describe el funcionamiento del modelo de simulación implementado para el proceso renovAr 2.
 ## Datos de entrada/ Archivos de parámetros
-
+Los datos de entrada se manejan a través de archivos *.csv*. Los archivos necesarios son los que se detallan a continuación con sus respectivos parámetros.
 ### Data Config
-+ Debugging (genera archivos LP)
-+ Restriccion_nodal (considerar restricción por pdi)
-+ Restriccion_por_tecnologia (considerar restricción de minimo por tecnologia)
-+ Restriccion_por_zona (cosiderar restricción por zona)
-+ Precio_aleatorio (considerar parámetro de precio aleatorio por generador)
-+ Restriccion_minimo (cosiderar parámetro de minimo por generador)
+|           config           | config value |                       Descripción                      |
+|:--------------------------:|:------------:|:------------------------------------------------------:|
+|          debugging         | true/false |           generar archivos LP para debuggear           |
+|      restriccion_nodal     | true/false |             considerar restricción por pdi             |
+| restriccion_por_tecnologia | true/false |     considerar restricción de mínimo por tecnología    |
+|    restriccion_por_zona    | true/false |             considerar restricción por zona            |
+|      precio_aleatorio      | true/false | considerar parámetro de precio aleatorio por generador |
+|     restriccion_minimo     | true/false |  considerar parámetro de potencia mínima por generador |
 
 ### Generadores
-+ Nombre
-+ Disponible (true o false)
-+ Pdi (punto de interconexión)
-+ Región o zona
-+ Tecnología 
-+ Pmax
-+ Pmin
-+ Precio oferta
-+ Tiempo de ejecución
-+ Precio_a (parametro a)
-+ Precio_b (parámetro b)
-+ Precio aleatorio (true o false)
-+ Distribución de probabilidad de la oferta
+|                 parámetro                 |    valor   |                    descripción                    |
+|:-----------------------------------------:|:----------:|:-------------------------------------------------:|
+|                   nombre                  |   string   |                                                   |
+|                 disponible                | true/false |                                                   |
+|                    pdi                    |   string   |               punto de interconexión              |
+|                    zona                   |   string   |                                                   |
+|                 tecnología                |   string   |                                                   |
+|                    pmax                   |    float   |               potencia ofertada                   |
+|                    pmin                   |    float   |   potencia mínima de adjudicación parcial         |
+|               precio oferta               |    float   |                      precio ofertado              |
+|            tiempo de ejecución            |    float   |       tiempo de ejecución proyecto (días)         |
+|                 precio_a                  |    float   |    parámetro *a* de la distribución respectiva    |
+|                 precio_b                  |    float   |    parámetro *b* de la distribución respectiva    |
+|              precio aleatorio             | true/false | considerar variación de precio según distribución |
+| Distribución de probabilidad de la oferta |   string*  |                tipo de distribución               |
 
-<center>
+Los valores asignados a los pdi, zona y tecnología de cada generador deben ser consistentes con los pdi, zona y tecnología existentes en sus archivos respectivos.
+
+*Los valores de distribución de probabilidad utilizables son los siguientes:
  
 | Distribución | Parámetro a | Parámetro b |
 |:------------:|:-----------:|:-----------:|
@@ -41,7 +47,7 @@
 - precio máximo de oferta por tecnología
 
 ### Zonas
-- Nombre
+- Nombre 
 - potencia máxima restricción por zona
 - tecnologías que involucra la zona (puede ser más de una)
 - puntos de interconexión pertenecientes a la zona
@@ -59,6 +65,10 @@ min z = suma(POA(g) x P(g)).
 Donde:
 + POA(g)	: precio ofertado considerando factor pérdida PDI y el tiempo de construcción.
 + U(g)	: variable binaria de adjudicación
+
+el POA de cada proyecto se calcula como sigue:
+
+POA(g) = Precio(g) * Fp(pdi(g)) - 0.005 * (tmaxtecn(tecn(g))-tej(g))
 
 ### Restricciones
 + Potencia máxima adjudicable por tecnología.
