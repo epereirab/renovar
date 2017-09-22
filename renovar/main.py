@@ -62,8 +62,8 @@ nombre_archivo = path_datos+'data_generadores.csv'
 print "importando: " + nombre_archivo
 data_modelo.load(filename=nombre_archivo,
                  param=(model.gen_disponible, model.gen_pdi, model.gen_zona, model.gen_tecnologia,
-                        model.gen_pmax, model.gen_pmin, model.gen_precio, model.gen_tejecucion,
-                        model.gen_precio_a, model.gen_precio_b, model.gen_precio_aleatorio,
+                        model.gen_pmax, model.gen_pmin, model.gen_tejecucion, model.gen_gbm,
+                        model.gen_precio, model.gen_precio_a, model.gen_precio_b, model.gen_precio_aleatorio,
                         model.gen_precio_distribucion),
                  index=model.GENERADORES)
 print 'importacion OK'
@@ -88,7 +88,7 @@ print 'importacion OK'
 print ("--- Creando Modelo ---")
 instancia_modelo = model.create_instance(data_modelo)
 
-opt = SolverFactory("cplex")
+opt = SolverFactory("glpk")
 
 print ("--- Resolviendo la optimizacion ---")
 results_master = opt.solve(instancia_modelo, tee=True)

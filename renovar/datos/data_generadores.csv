@@ -1,47 +1,47 @@
-GENERADOR,gen_disponible,gen_pdi,gen_zona,gen_tecnologia,gen_pmax,gen_pmin,gen_precio,gen_tejecucion,gen_precio_a,gen_precio_b,gen_precio_aleatorio,gen_precio_distribucion
-EOL-09 Pomona I,true,pdi_5_2,COMAHUE,eolica,100,70,54.88,750,54.88,0.6,true,normal
-EOL-19 La Banderita,true,pdi_9,COMAHUE,eolica,36.75,25.725,49.98,670,49.98,0.6,true,normal
-EOL-36 O´Connor,true,pdi_30,COMAHUE,eolica,50,35,59,573,59,0.6,true,normal
-EOL-04 Viento Austral,true,pdi_27,PATAGONIA,eolica,97.2,68.04,58.9,649,58.9,0.6,true,normal
-EOL-20 Del Bicentenario,true,pdi_25,PATAGONIA,eolica,100,70,49.5,640,49.5,0.6,true,normal
-EOL-27 Loma blanca 6,true,pdi_37,PATAGONIA,eolica,100,70,53.53,810,53.53,0.6,true,normal
-EOL-28 Loma blanca 5,true,pdi_37,PATAGONIA,eolica,100,70,53.55,810,53.55,0.6,true,normal
-EOL-40 La Deseada,true,pdi_29,PATAGONIA,eolica,100,70,52,667,52,0.6,true,normal
-EOL-02 Vientos Bajo Hondo,true,pdi_13,BUENOS AIRES,eolica,99,69.3,57.89,690,57.88,60.89,true,triangular
-EOL-03 Vientos Bajo Hondo I,true,pdi_18,BUENOS AIRES,eolica,99,69.3,55.49,640,55.48,58.49,true,triangular
-EOL-18 Bahía Blanca,true,pdi_18,BUENOS AIRES,eolica,96,67.2,52.19,707,52.18,55.19,true,triangular
-EOL-29 Miramar,true,pdi_1_1,BUENOS AIRES,eolica,97.65,68.355,56.38,698,56.37,59.38,true,triangular
-EOL-43 De La Bahía,true,pdi_14,BUENOS AIRES,eolica,50,35,56,490,55.99,59,true,triangular
-EOL-45 Pampa,true,pdi_15,BUENOS AIRES,eolica,100,70,46,465,45.99,49,true,triangular
-EOL-48 Vientos de Necochea 1,true,pdi_15_1,BUENOS AIRES,eolica,37.95,26.565,54.96,750,54.95,57.96,true,triangular
-EOL-49 Wayra II,true,pdi_14,BUENOS AIRES,eolica,100,70,52.7,900,52.69,55.7,true,triangular
-EOL-32 El Sosneado,true,pdi_59,RESTO EOLICA,eolica,50,35,55,900,54.99,58,true,triangular
-EOL-37 Achiras,true,pdi_57,RESTO EOLICA,eolica,48,33.6,59.38,496,59.37,62.38,true,triangular
-EOL-47 Arauco II (Etapa 3 y 4),true,pdi_44,RESTO EOLICA,eolica,95,66.5,56.67,900,56.66,59.67,true,triangular
-SFV-08 Arauco,true,pdi_39,NOA,solar,50,35,55.98,400,55.98,0.6,true,normal
-SFV-12 Cafayate,true,pdi_53,NOA,solar,80,56,56.28,540,56.28,0.6,true,normal
-SFV-15 Nonogasta,true,pdi_42,NOA,solar,35,24.5,56.43,540,56.43,0.6,true,normal
-SFV-18 Fiambalá,true,pdi_46_1,NOA,solar,11,7.7,53.73,480,53.73,0.6,true,normal
-SFV-20 Tinogasta,true,pdi_46,NOA,solar,15,10.5,53.43,480,53.43,0.6,true,normal
-SFV-21 Saujil,true,pdi_48,NOA,solar,22.5,15.75,51.93,480,51.93,0.6,true,normal
-SFV-26 Andalgalá,true,pdi_49,NOA,solar,30.8,21.56,57.43,480,57.43,0.6,true,normal
-SFV-35 Cafayate,true,pdi_53,NOA,solar,50,35,58.45,426,58.45,0.6,true,normal
-SFV-56 Andalgalá,true,pdi_49,NOA,solar,100,70,57.77,510,57.77,0.6,true,normal
-SFV-01 Lavalle,true,pdi_62_6,RESTO SOLAR,solar,17.6,12.32,55,900,55,0.6,true,normal
-SFV-02 Lujan de Cuyo,true,pdi_61,RESTO SOLAR,solar,22,15.4,55,900,55,0.6,true,normal
-SFV-04 La Paz,true,pdi_62_3,RESTO SOLAR,solar,14.08,9.856,55,900,55,0.6,true,normal
-SFV-05 PASIP,true,pdi_64,RESTO SOLAR,solar,1.15,0.805,52,360,52,0.6,true,normal
-SFV-06 General Alvear,true,pdi_65,RESTO SOLAR,solar,17.6,12.32,55,900,55,0.6,true,normal
-SFV-07 Algarrobito,true,pdi_67,RESTO SOLAR,solar,30,21,57.66,361,57.66,0.6,true,normal
-SFV-31 Sarmiento,true,pdi_71_5,RESTO SOLAR,solar,35,24.5,52.95,473,52.95,0.6,true,normal
-SFV-32 Ullum3,true,pdi_72_1,RESTO SOLAR,solar,36.5,25.55,57.63,540,57.63,0.6,true,normal
-SFV-34 Anchoris,true,pdi_62_7,RESTO SOLAR,solar,21.3,14.91,48,574,48,0.6,true,normal
-SFV-36 Caldenes del Oeste,true,pdi_58_4,RESTO SOLAR,solar,24.75,17.325,58.9,380,58.9,0.6,true,normal
-SFV-37 Ullum 4,true,pdi_72_1,RESTO SOLAR,solar,20,14,56.5,630,56.5,0.6,true,normal
-SFV-41 La Cumbre,true,pdi_58,RESTO SOLAR,solar,22,15.4,56.7,475,56.7,0.6,true,normal
-SFV-45 Ullum N2,true,pdi_72_1,RESTO SOLAR,solar,25,17.5,55.23,540,55.23,0.6,true,normal
-SFV-46 Ullum N1,true,pdi_72_1,RESTO SOLAR,solar,25,17.5,53.73,540,53.73,0.6,true,normal
-SFV-49 Iglesia - Guañizuli,true,pdi_69_1,RESTO SOLAR,solar,80,56,53.6,487,53.6,0.6,true,normal
-SFV-57 Las Lomitas,true,pdi_72_3,RESTO SOLAR,solar,1.7,1.19,59.2,360,59.2,0.6,true,normal
-SFV-58 Ullum X,true,pdi_72_1,RESTO SOLAR,solar,100,70,57.77,510,57.77,0.6,true,normal
-mainstream,false,pdi_5_2,COMAHUE,eolica,100,70,60,510,56,0.6,false,normal
+GENERADOR,gen_disponible,gen_pdi,gen_zona,gen_tecnologia,gen_pmax,gen_pmin,gen_tejecucion,gen_gbm,gen_precio,gen_precio_a,gen_precio_b,gen_precio_aleatorio,gen_precio_distribucion
+EOL-09 Pomona I,true,pdi_5_2,COMAHUE,eolica,100,70,750,0,54.88,54.88,0.6,true,normal
+EOL-19 La Banderita,true,pdi_9,COMAHUE,eolica,36.75,25.725,670,0,49.98,49.98,0.6,true,normal
+EOL-36 O´Connor,true,pdi_30,COMAHUE,eolica,50,35,573,0,59,59,0.6,true,normal
+EOL-04 Viento Austral,true,pdi_27,PATAGONIA,eolica,97.2,68.04,649,0,58.9,58.9,0.6,true,normal
+EOL-20 Del Bicentenario,true,pdi_25,PATAGONIA,eolica,100,70,640,0,49.5,49.5,0.6,true,normal
+EOL-27 Loma blanca 6,true,pdi_37,PATAGONIA,eolica,100,70,810,0,53.53,53.53,0.6,true,normal
+EOL-28 Loma blanca 5,true,pdi_37,PATAGONIA,eolica,100,70,810,0,53.55,53.55,0.6,true,normal
+EOL-40 La Deseada,true,pdi_29,PATAGONIA,eolica,100,70,667,0,52,52,0.6,true,normal
+EOL-02 Vientos Bajo Hondo,true,pdi_13,BUENOS AIRES,eolica,99,69.3,690,0,57.89,57.88,60.89,true,triangular
+EOL-03 Vientos Bajo Hondo I,true,pdi_18,BUENOS AIRES,eolica,99,69.3,640,0,55.49,55.48,58.49,true,triangular
+EOL-18 Bahía Blanca,true,pdi_18,BUENOS AIRES,eolica,96,67.2,707,0,52.19,52.18,55.19,true,triangular
+EOL-29 Miramar,true,pdi_1_1,BUENOS AIRES,eolica,97.65,68.355,698,0,56.38,56.37,59.38,true,triangular
+EOL-43 De La Bahía,true,pdi_14,BUENOS AIRES,eolica,50,35,490,0,56,55.99,59,true,triangular
+EOL-45 Pampa,true,pdi_15,BUENOS AIRES,eolica,100,70,465,0,46,45.99,49,true,triangular
+EOL-48 Vientos de Necochea 1,true,pdi_15_1,BUENOS AIRES,eolica,37.95,26.565,750,0,54.96,54.95,57.96,true,triangular
+EOL-49 Wayra II,true,pdi_14,BUENOS AIRES,eolica,100,70,900,0,52.7,52.69,55.7,true,triangular
+EOL-32 El Sosneado,true,pdi_59,RESTO EOLICA,eolica,50,35,900,0,55,54.99,58,true,triangular
+EOL-37 Achiras,true,pdi_57,RESTO EOLICA,eolica,48,33.6,496,0,59.38,59.37,62.38,true,triangular
+EOL-47 Arauco II (Etapa 3 y 4),true,pdi_44,RESTO EOLICA,eolica,95,66.5,900,0,56.67,56.66,59.67,true,triangular
+SFV-08 Arauco,true,pdi_39,NOA,solar,50,35,400,0,55.98,55.98,0.6,true,normal
+SFV-12 Cafayate,true,pdi_53,NOA,solar,80,56,540,0,56.28,56.28,0.6,true,normal
+SFV-15 Nonogasta,true,pdi_42,NOA,solar,35,24.5,540,0,56.43,56.43,0.6,true,normal
+SFV-18 Fiambalá,true,pdi_46_1,NOA,solar,11,7.7,480,0,53.73,53.73,0.6,true,normal
+SFV-20 Tinogasta,true,pdi_46,NOA,solar,15,10.5,480,0,53.43,53.43,0.6,true,normal
+SFV-21 Saujil,true,pdi_48,NOA,solar,22.5,15.75,480,0,51.93,51.93,0.6,true,normal
+SFV-26 Andalgalá,true,pdi_49,NOA,solar,30.8,21.56,480,0,57.43,57.43,0.6,true,normal
+SFV-35 Cafayate,true,pdi_53,NOA,solar,50,35,426,0,58.45,58.45,0.6,true,normal
+SFV-56 Andalgalá,true,pdi_49,NOA,solar,100,70,510,0,57.77,57.77,0.6,true,normal
+SFV-01 Lavalle,true,pdi_62_6,RESTO SOLAR,solar,17.6,12.32,900,0,55,55,0.6,true,normal
+SFV-02 Lujan de Cuyo,true,pdi_61,RESTO SOLAR,solar,22,15.4,900,0,55,55,0.6,true,normal
+SFV-04 La Paz,true,pdi_62_3,RESTO SOLAR,solar,14.08,9.856,900,0,55,55,0.6,true,normal
+SFV-05 PASIP,true,pdi_64,RESTO SOLAR,solar,1.15,0.805,360,0,52,52,0.6,true,normal
+SFV-06 General Alvear,true,pdi_65,RESTO SOLAR,solar,17.6,12.32,900,0,55,55,0.6,true,normal
+SFV-07 Algarrobito,true,pdi_67,RESTO SOLAR,solar,30,21,361,0,57.66,57.66,0.6,true,normal
+SFV-31 Sarmiento,true,pdi_71_5,RESTO SOLAR,solar,35,24.5,473,0,52.95,52.95,0.6,true,normal
+SFV-32 Ullum3,true,pdi_72_1,RESTO SOLAR,solar,36.5,25.55,540,0,57.63,57.63,0.6,true,normal
+SFV-34 Anchoris,true,pdi_62_7,RESTO SOLAR,solar,21.3,14.91,574,0,48,48,0.6,true,normal
+SFV-36 Caldenes del Oeste,true,pdi_58_4,RESTO SOLAR,solar,24.75,17.325,380,0,58.9,58.9,0.6,true,normal
+SFV-37 Ullum 4,true,pdi_72_1,RESTO SOLAR,solar,20,14,630,0,56.5,56.5,0.6,true,normal
+SFV-41 La Cumbre,true,pdi_58,RESTO SOLAR,solar,22,15.4,475,0,56.7,56.7,0.6,true,normal
+SFV-45 Ullum N2,true,pdi_72_1,RESTO SOLAR,solar,25,17.5,540,0,55.23,55.23,0.6,true,normal
+SFV-46 Ullum N1,true,pdi_72_1,RESTO SOLAR,solar,25,17.5,540,0,53.73,53.73,0.6,true,normal
+SFV-49 Iglesia - Guañizuli,true,pdi_69_1,RESTO SOLAR,solar,80,56,487,0,53.6,53.6,0.6,true,normal
+SFV-57 Las Lomitas,true,pdi_72_3,RESTO SOLAR,solar,1.7,1.19,360,0,59.2,59.2,0.6,true,normal
+SFV-58 Ullum X,true,pdi_72_1,RESTO SOLAR,solar,100,70,510,0,57.77,57.77,0.6,true,normal
+mainstream,false,pdi_5_2,COMAHUE,eolica,100,70,510,0,60,56,0.6,false,normal
