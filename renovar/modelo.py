@@ -190,6 +190,15 @@ def zona_max_rule(model, zona):
     return lside <= rside
 
 model.CT_zona_max = Constraint(model.ZONAS, rule=zona_max_rule)
+
+# CONSTRAINT 5: garantia del banco mundial
+def gbm_rule(model):
+    if not model.config_value['restriccion_gbm']:
+        return Constraint.Skip
+    return sum(model.gen_gbm[g]*model.GEN_UC[g] for g in model.GENERADORES) <= model.config_value['gbm']
+
+    model.CT_gbm = Constraint(rule=gbm_rule)
+
 ###########################################################################
 # FUNCION OBJETIVO
 ###########################################################################
