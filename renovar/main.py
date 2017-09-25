@@ -88,7 +88,10 @@ print 'importacion OK'
 print ("--- Creando Modelo ---")
 instancia_modelo = model.create_instance(data_modelo)
 
-opt = SolverFactory("glpk")
+if instancia_modelo.config_value['solver'] == 'glpk':
+    opt = SolverFactory("glpk")
+elif instancia_modelo.config_value['solver'] == 'cplex':
+    opt = SolverFactory("cplex")
 
 print ("--- Resolviendo la optimizacion ---")
 results_master = opt.solve(instancia_modelo, tee=True)
