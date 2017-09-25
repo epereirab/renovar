@@ -18,4 +18,7 @@ En cuanto a la configuración:
 - Editar archivos en carpeta <b>/datos</b>
 
 ## Ejecución
-Descripción de principales pasos de ejecución
+
+- Para ejecutar una iteración única se debe ejecutar el siguiente comando `python main.py`.
+- Para realizar varias corridas se debe ejecutar `./corre.sh ncorridas nprocesos`.
+- Para iterar sobre un rango de precios en la oferta de un generador se debe ejecutar `./itera_precios ncorridas nprocesos generador precio_ini precio_fin precio_paso`.
