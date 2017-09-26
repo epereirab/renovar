@@ -7,4 +7,4 @@ precio_aleatorio,true
 restriccion_minimo,true
 restriccion_gbm,false
 gbm,184328500
-solver,cplex
+solver,glpk
