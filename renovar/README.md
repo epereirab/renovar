@@ -11,19 +11,22 @@ Los datos de entrada se manejan a través de archivos *.csv*. Los archivos neces
 |    restriccion_por_zona    | true/false |             considerar restricción por zona            |
 |      precio_aleatorio      | true/false | considerar parámetro de precio aleatorio por generador |
 |     restriccion_minimo     | true/false |  considerar parámetro de potencia mínima por generador |
+|     restriccion_gbm        | true/false |  considerar restricción de garantía banco mundial      |
+|          solver            | cplex/glpk |  elegir solver para realizar la optimización           |
 
 ### Generadores
 |                 parámetro                 |    valor   |                    descripción                    |
 |:-----------------------------------------:|:----------:|:-------------------------------------------------:|
-|                   nombre                  |   string   |                                                   |
-|                 disponible                | true/false |                                                   |
+|                   nombre                  |   string   |                  nombre proyecto                  |
+|                 disponible                | true/false |                considerar o no en modelo          |
 |                    pdi                    |   string   |               punto de interconexión              |
-|                    zona                   |   string   |                                                   |
-|                 tecnología                |   string   |                                                   |
-|                    pmax                   |    float   |               potencia ofertada                   |
-|                    pmin                   |    float   |   potencia mínima de adjudicación parcial         |
-|               precio oferta               |    float   |                      precio ofertado              |
-|            tiempo de ejecución            |    float   |       tiempo de ejecución proyecto (días)         |
+|                    zona                   |   string   |                     zona                          |
+|                 tecnología                |   string   |                     tecnologia                    |
+|                    pmax [MW]              |    float   |               potencia ofertada                   |
+|                    pmin [MW]              |    float   |   potencia mínima de adjudicación parcial         |
+|            tiempo de ejecución [dias]     |    float   |       tiempo de ejecución proyecto (días)         |
+|                    gbm [$/MW]             |    float   |       tiempo de ejecución proyecto (días)         |
+|               precio oferta [$/MWh]       |    float   |                      precio ofertado              |
 |                 precio_a                  |    float   |    parámetro *a* de la distribución respectiva    |
 |                 precio_b                  |    float   |    parámetro *b* de la distribución respectiva    |
 |              precio aleatorio             | true/false | considerar variación de precio según distribución |
@@ -41,24 +44,29 @@ Los valores asignados a los pdi, zona y tecnología de cada generador deben ser 
 | uniforme     | low bound   | high bound  |
  
 ### Tecnologias
-- Tipo (ej: eólica, solar)
-- potencia mínima restricción por tecnología
-- tiempo de ejecución máximo por tecnología
-- precio máximo de oferta por tecnología
+| Parámetro | Valor | Descripción |
+|:---------:|:-----:|:-----------:|
+|  nombre   |string |      nombre tecnología       |
+|     min [MW]  | float |      potencia mínima restricción por tecnología       |
+|  tejecucionmax [dias]   | float |      tiempo de ejecución máximo por tecnología       |
+|  nombre [$/MWh]  | float |      precio máximo de oferta por tecnología      |
 
 ### Zonas
-- Nombre 
-- potencia máxima restricción por zona
-- tecnologías que involucra la zona (puede ser más de una)
-- puntos de interconexión pertenecientes a la zona
+| Parámetro | Valor | Descripción |
+|:---------:|:-----:|:-----------:|
+|  nombre   |string |      nombre zona       |
+|  max [MW]  | float |  potencia máxima restricción por zona   |
+|  tecnologias  |[string1,..] |   lista de tecnologias involucradas en la restricción por zona      |
+|  pdi's   |[string1,..] |  lista de pdi pertenecientes a la zona |
 
 ### Pdi
-- Nombre
-- Potencia máxima de inyección en pdi
-- Factor de pérdidas asociado al pdi
+| Parámetro | Valor | Descripción |
+|:---------:|:-----:|:-----------:|
+|  nombre   |string |      nombre pdi     |
+| max [MW]  | float |   Potencia máxima de inyección de pdi |
+|     fp    | float |       Factor de pérdidas asociado al pdi   |
 
 ## Modelo matemático
-
 ### Función objetivo
 min z = suma(POA(g) x P(g)).
 
