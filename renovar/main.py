@@ -71,7 +71,8 @@ print 'importacion OK'
 nombre_archivo = path_datos+'data_tecnologias.csv'
 print "importando: " + nombre_archivo
 data_modelo.load(filename=nombre_archivo,
-                 param=(model.tecnologia_min, model.tecnologia_tejecucionmax, model.tecnologia_preciomax),
+                 param=(model.tecnologia_min, model.tecnologia_tejecucionmax, model.tecnologia_preciomax,
+                        model.tecnologia_gbm),
                  index=model.TECNOLOGIAS)
 print 'importacion OK'
 

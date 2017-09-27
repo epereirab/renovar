@@ -60,6 +60,7 @@ model.gen_precio_distribucion = Param(model.GENERADORES)
 model.tecnologia_min = Param(model.TECNOLOGIAS)
 model.tecnologia_tejecucionmax = Param(model.TECNOLOGIAS)
 model.tecnologia_preciomax = Param(model.TECNOLOGIAS)
+model.tecnologia_gbm = Param(model.TECNOLOGIAS)
 
 # ZONAS
 model.zona_max = Param(model.ZONAS)
@@ -192,14 +193,14 @@ def zona_max_rule(model, zona):
 model.CT_zona_max = Constraint(model.ZONAS, rule=zona_max_rule)
 
 # CONSTRAINT 5: garantia del banco mundial
-def gbm_rule(model):
+def gbm_rule(model, tecnologia):
 
     if not model.config_value['restriccion_gbm']:
         return Constraint.Skip
+    
+    return sum(model.gen_gbm[g]*model.gen_pmax[g]*model.GEN_UC[g] for g in model.GENERADORES if tecnologia == model.gen_tecnologia[g]) <= model.tecnologia_gbm[tecnologia]
 
-    return sum(model.gen_gbm[g]*model.gen_pmax[g]*model.GEN_UC[g] for g in model.GENERADORES) <= model.config_value['gbm']
-
-model.CT_gbm = Constraint(rule=gbm_rule)
+model.CT_gbm = Constraint(model.TECNOLOGIAS, rule=gbm_rule)
 
 ###########################################################################
 # FUNCION OBJETIVO
