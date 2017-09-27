@@ -49,7 +49,8 @@ Los valores asignados a los pdi, zona y tecnología de cada generador deben ser 
 |  nombre   |string |      nombre tecnología       |
 |     min [MW]  | float |      potencia mínima restricción por tecnología       |
 |  tejecucionmax [dias]   | float |      tiempo de ejecución máximo por tecnología       |
-|  nombre [$/MWh]  | float |      precio máximo de oferta por tecnología      |
+|  preciomax [$/MWh]  | float |      precio máximo de oferta por tecnología      |
+| gbm [$] | float | gbm total por tecnología |
 
 ### Zonas
 | Parámetro | Valor | Descripción |
@@ -68,7 +69,7 @@ Los valores asignados a los pdi, zona y tecnología de cada generador deben ser 
 
 ## Modelo matemático
 ### Función objetivo
-min z = suma(POA(g) x P(g)).
+min z = suma(POA(g) x P(g))
 
 Donde:
 + POA(g)	: precio ofertado considerando factor pérdida PDI y el tiempo de construcción.
