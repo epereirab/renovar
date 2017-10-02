@@ -3,7 +3,7 @@
 # import os
 # from os.path import abspath, dirname
 # sys.path.insert(0, dirname(dirname(dirname(dirname(abspath(__file__))))))
-#from coopr.pyomo import *
+# from coopr.pyomo import *
 import math
 import random
 from pyomo.environ import *
@@ -20,6 +20,8 @@ model.dual = Suffix(direction=Suffix.IMPORT)
 model.CONFIG = Set()
 # PDI
 model.PDI = Set()
+# LIMITACIONES_PDI
+model.LIMITACION = Set()
 # GENERADORES
 model.GENERADORES = Set()
 # TECNOLOGIAS
@@ -40,8 +42,11 @@ model.config_value = Param(model.CONFIG)
 model.pdi_max = Param(model.PDI)
 model.pdi_fp = Param(model.PDI)
 
-# GENERADORES
+# LIMITACION
+model.limitacion_max = Param(model.LIMITACION)
+model.limitacion_pdi = Param(model.LIMITACION)
 
+# GENERADORES
 model.gen_disponible = Param(model.GENERADORES)
 model.gen_pdi = Param(model.GENERADORES)
 model.gen_zona = Param(model.GENERADORES)
@@ -65,11 +70,11 @@ model.tecnologia_gbm = Param(model.TECNOLOGIAS)
 # ZONAS
 model.zona_max = Param(model.ZONAS)
 model.zona_tecnologias = Param(model.ZONAS)
-model.zona_barras = Param(model.ZONAS)
 
 ###########################################################################
 # SETS FROM PARAMETERS
 ###########################################################################
+
 
 ###########################################################################
 # PARAMETERS FROM PARAMETERS
@@ -83,18 +88,18 @@ def rule_gen_poa(model, g):
             return model.gen_precio[g]*model.pdi_fp[model.gen_pdi[g]]-0.005 * dias_adelanto
         distribucion = model.gen_precio_distribucion[g]
         if distribucion == 'normal':
-            precio_aleatorio = round(random.gauss(model.gen_precio_a[g], model.gen_precio_b[g]),2)
+            precio_aleatorio = round(random.gauss(model.gen_precio_a[g], model.gen_precio_b[g]), 2)
         elif distribucion == 'pareto':
-            precio_aleatorio = model.gen_precio[g]+round(random.paretovariate(model.gen_precio_a[g]),2)
+            precio_aleatorio = model.gen_precio[g]+round(random.paretovariate(model.gen_precio_a[g]), 2)
         elif distribucion == 'triangular':
-            precio_aleatorio = round(random.triangular(model.gen_precio_a[g], model.gen_precio_b[g], model.gen_precio[g]),2)
+            precio_aleatorio = round(random.triangular(model.gen_precio_a[g], model.gen_precio_b[g],
+                                                       model.gen_precio[g]), 2)
         else:
-            precio_aleatorio = round(random.uniform(model.gen_precio_a[g], model.gen_precio_b[g]),2)
+            precio_aleatorio = round(random.uniform(model.gen_precio_a[g], model.gen_precio_b[g]), 2)
         return precio_aleatorio*model.pdi_fp[model.gen_pdi[g]]-0.005 * dias_adelanto
     return model.gen_precio[g] * model.pdi_fp[model.gen_pdi[g]] - 0.005 * dias_adelanto
 
-model.gen_poa = Param(model.GENERADORES,
-                    initialize=rule_gen_poa)
+model.gen_poa = Param(model.GENERADORES, initialize=rule_gen_poa)
 
 ###########################################################################
 # VARIABLES
@@ -108,7 +113,7 @@ def bounds_gen_pg(model, g):
     ub = round(model.gen_pmax[g], 2)
     if model.gen_disponible[g]:
         return 0, ub
-    return 0,0
+    return 0, 0
 
 model.GEN_PC = Var(model.GENERADORES, within=NonNegativeReals, bounds=bounds_gen_pg)
 
@@ -123,7 +128,7 @@ model.VH_TECH = Var(model.TECNOLOGIAS, within=NonNegativeReals, bounds=bounds_vh
 # CONSTRAINTS
 ###########################################################################
 
-# CONSTRAINT 1: Inyección maxima por cada PDI´
+# CONSTRAINT 1: inyección maxima por cada PDI´
 def nodal_balance_rule(model, pdi):
 
     if not model.config_value['restriccion_nodal']:
@@ -142,7 +147,17 @@ def nodal_balance_rule(model, pdi):
 
 model.CT_nodal_balance = Constraint(model.PDI, rule=nodal_balance_rule)
 
-# CONSTRAINT 2: potencia minima casada  pmin * UC <= PC
+# CONSTRAINT 2: limites adicionales para cada pdi´
+def nodal_limit_rule(model, limitacion):
+
+    if not model.config_value['restriccion_limitacion']:
+        return Constraint.Skip
+
+    return sum(model.GEN_PC[g] for g in model.GENERADORES if model.gen_pdi[g] in model.limitacion_pdi[limitacion]) <= model.limitacion_max[limitacion]
+
+model.CT_nodal_limit = Constraint(model.LIMITACION, rule=nodal_limit_rule)
+
+# CONSTRAINT 3: potencia minima casada  pmin * UC <= PC
 def gen_pmin_rule(model, g):
     if not model.config_value['restriccion_minimo']:
         return Constraint.Skip
@@ -152,7 +167,7 @@ def gen_pmin_rule(model, g):
 
 model.CT_potencia_minima = Constraint(model.GENERADORES, rule=gen_pmin_rule)
 
-# CONSTRAINT 3: potencia maxima casada  pmax * UC >= PC
+# CONSTRAINT 4: potencia maxima casada  pmax * UC >= PC
 def gen_pmax_rule(model, g):
 
     rside = model.GEN_PC[g]
@@ -161,7 +176,7 @@ def gen_pmax_rule(model, g):
 
 model.CT_potencia_maxima = Constraint(model.GENERADORES, rule=gen_pmax_rule)
 
-# CONSTRAINT 4: minimo por tecnologia
+# CONSTRAINT 5: minimo por tecnologia
 
 def tecnologia_balance_rule(model, tecnologia):
 
@@ -174,7 +189,7 @@ def tecnologia_balance_rule(model, tecnologia):
 
 model.CT_tecnologia_balance = Constraint(model.TECNOLOGIAS, rule=tecnologia_balance_rule)
 
-# CONSTRAINT 4: maximo por zonas
+# CONSTRAINT 6: maximo por zonas
 def zona_max_rule(model, zona):
 
     if not model.config_value['restriccion_por_zona']:
@@ -192,12 +207,12 @@ def zona_max_rule(model, zona):
 
 model.CT_zona_max = Constraint(model.ZONAS, rule=zona_max_rule)
 
-# CONSTRAINT 5: garantia del banco mundial
+# CONSTRAINT 7: garantia del banco mundial
 def gbm_rule(model, tecnologia):
 
     if not model.config_value['restriccion_gbm']:
         return Constraint.Skip
-    
+
     return sum(model.gen_gbm[g]*model.gen_pmax[g]*model.GEN_UC[g] for g in model.GENERADORES if tecnologia == model.gen_tecnologia[g]) <= model.tecnologia_gbm[tecnologia]
 
 model.CT_gbm = Constraint(model.TECNOLOGIAS, rule=gbm_rule)

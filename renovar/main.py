@@ -58,6 +58,13 @@ data_modelo.load(filename=nombre_archivo,
                  index=model.PDI)
 print 'importacion OK'
 
+nombre_archivo = path_datos+'data_limitacion.csv'
+print "importando: " + nombre_archivo
+data_modelo.load(filename=nombre_archivo,
+                 param=(model.limitacion_max, model.limitacion_pdi),
+                 index=model.LIMITACION)
+print 'importacion OK'
+
 nombre_archivo = path_datos+'data_generadores.csv'
 print "importando: " + nombre_archivo
 data_modelo.load(filename=nombre_archivo,
@@ -79,7 +86,7 @@ print 'importacion OK'
 nombre_archivo = path_datos+'data_zonas.csv'
 print "importando: " + nombre_archivo
 data_modelo.load(filename=nombre_archivo,
-                 param=(model.zona_max, model.zona_tecnologias, model.zona_barras),
+                 param=(model.zona_max, model.zona_tecnologias),
                  index=model.ZONAS)
 print 'importacion OK'
 

@@ -44,4 +44,4 @@ SFV-46 Ullum N1,true,pdi_72_1,RESTO SOLAR,solar,25,17.5,540,0,53.73,53.73,1,true
 SFV-49 Iglesia - Guañizuli,true,pdi_69_1,RESTO SOLAR,solar,80,56,487,0,54.1,54.1,1,true,normal
 SFV-57 Las Lomitas,true,pdi_72_3,RESTO SOLAR,solar,1.7,1.19,360,0.5,59.2,59.2,1,true,normal
 SFV-58 Ullum X,true,pdi_72_1,RESTO SOLAR,solar,100,70,510,0.5,57.77,57.77,1,true,normal
-mainstream,true,pdi_5_2,COMAHUE,eolica,100,70,730,0,56,56,1,false,normal
+mainstream,true,pdi_5_2,COMAHUE,eolica,100,70,730,0,54,54,1,false,normal
