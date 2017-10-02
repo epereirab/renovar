@@ -86,7 +86,7 @@ print 'importacion OK'
 nombre_archivo = path_datos+'data_zonas.csv'
 print "importando: " + nombre_archivo
 data_modelo.load(filename=nombre_archivo,
-                 param=(model.zona_max, model.zona_tecnologias),
+                 param=(model.zona_max, model.zona_tecnologias, model.zona_zonas),
                  index=model.ZONAS)
 print 'importacion OK'
 

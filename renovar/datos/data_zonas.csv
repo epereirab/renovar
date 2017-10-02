@@ -1,7 +1,8 @@
-ZONA,zona_max,zona_tecnologia
-COMAHUE,136.75,[eolica]
-PATAGONIA,200,[eolica]
-BUENOS AIRES,235.6,[eolica]
-RESTO EOLICA,193,[eolica]
-NOA,163.5,[solar]
-RESTO SOLAR,352.68,[solar]
+ZONA,zona_max,zona_tecnologia,zona_zona
+COMAHUE,136.75,[eolica],[COMAHUE]
+PATAGONIA,200,[eolica],[PATAGONIA]
+BUENOS AIRES,235.6,[eolica],[BUENOS AIRES]
+RESTO EOLICA,193,[eolica],[RESTO EOLICA]
+NOA,163.5,[solar],[NOA]
+RESTO SOLAR,352.68,[solar],[RESTO SOLAR]
+COMAHUE+PATAGONIA+BUENOS AIRES,400,[eolica],"[COMAHUE,PATAGONIA,BUENOS AIRES]"

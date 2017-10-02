@@ -70,6 +70,7 @@ model.tecnologia_gbm = Param(model.TECNOLOGIAS)
 # ZONAS
 model.zona_max = Param(model.ZONAS)
 model.zona_tecnologias = Param(model.ZONAS)
+model.zona_zonas = Param(model.ZONAS)
 
 ###########################################################################
 # SETS FROM PARAMETERS
@@ -177,7 +178,6 @@ def gen_pmax_rule(model, g):
 model.CT_potencia_maxima = Constraint(model.GENERADORES, rule=gen_pmax_rule)
 
 # CONSTRAINT 5: minimo por tecnologia
-
 def tecnologia_balance_rule(model, tecnologia):
 
     if not model.config_value['restriccion_por_tecnologia']:
@@ -197,7 +197,7 @@ def zona_max_rule(model, zona):
     lside = 0
     formular = False
     for g in model.GENERADORES:
-        if (model.gen_zona[g] == zona) and (model.gen_tecnologia[g] in model.zona_tecnologias[zona]):
+        if (model.gen_zona[g] in model.zona_zonas[zona]) and (model.gen_tecnologia[g] in model.zona_tecnologias[zona]):
             lside += model.GEN_PC[g]
             formular= True
     rside = model.zona_max[zona]
