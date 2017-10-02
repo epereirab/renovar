@@ -85,5 +85,5 @@ POA(g) = Precio(g) * Fp(pdi(g)) - 0.005 * (tmaxtecn(tecn(g))-tej(g))
 + Potencia máxima adjudicable por PDI
 + Potencia máxima y mínima de adjudicación por proyecto.
 
-[f1]: http://chart.apis.google.com/chart?cht=tx&chl=min \quad {z}=\sum{}{POA(g)\cdot P(g)}
+[f1]: http://chart.apis.google.com/chart?cht=tx&chl={min%20\quad%20{z}=\sum{}{POA(g)\cdot%20P(g)}}
 
