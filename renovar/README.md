@@ -113,6 +113,7 @@ el POA de cada proyecto se calcula como sigue:
 Donde:
 + PC(g)	: variable de potencia casada [MW]
 + UC(g)	: variable binaria de adjudicación
++ VH(tecn) : variable de holgura por tecnología
 
 [f1]: http://chart.apis.google.com/chart?cht=tx&chl={min%20\quad%20{z}=\sum{}{POA(g)\cdot%20PC(g)}}
 [f2]: http://chart.apis.google.com/chart?cht=tx&chl={POA(g)=Precio(g)\cdot%20Fp(pdi(g))-0.005\cdot%20(tmaxtecn(tecn(g))-tej(g))}
