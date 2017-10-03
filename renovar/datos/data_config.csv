@@ -4,7 +4,7 @@ restriccion_nodal,true
 restriccion_limitacion,true
 restriccion_por_tecnologia,true
 restriccion_por_zona,true
-precio_aleatorio,true
+precio_aleatorio,false
 restriccion_minimo,true
-restriccion_gbm,false
+restriccion_gbm,true
 solver,glpk
