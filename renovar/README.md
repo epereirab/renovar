@@ -116,7 +116,7 @@ Donde:
 
 [f1]: http://chart.apis.google.com/chart?cht=tx&chl={min%20\quad%20{z}=\sum{}{POA(g)\cdot%20PC(g)}}
 [f2]: http://chart.apis.google.com/chart?cht=tx&chl={POA(g)=Precio(g)\cdot%20Fp(pdi(g))-0.005\cdot%20(tmaxtecn(tecn(g))-tej(g))}
-[f3]: http://chart.apis.google.com/chart?cht=tx&chl={\sum_{}{PC(g)}\pm%20VH(tecn)=P_{min}(tecn)\qquad%20\forall%20g\in%20[tecn]}
+[f3]: http://chart.apis.google.com/chart?cht=tx&chl={\sum_{}{PC(g)}%2bVH(tecn)=P_{min}(tecn)\qquad%20\forall%20g\in%20[tecn]}
 [f4]: http://chart.apis.google.com/chart?cht=tx&chl={\sum_{}{PC(g)}\leq%20P_{max}(zona)\qquad%20\forall%20g\in%20[zona]}
 [f5]: http://chart.apis.google.com/chart?cht=tx&chl={\sum_{}{PC(g)}\leq%20P_{max}(pdi)\qquad%20\forall%20g\in%20[pdi]}
 [f6]: http://chart.apis.google.com/chart?cht=tx&chl={\sum_{}{PC(g)}\leq%20P_{max}(limitacion)\qquad%20\forall%20g\in%20[limitacion(pdi)]}
