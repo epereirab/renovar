@@ -83,19 +83,44 @@ Los valores asignados a los pdi, zona y tecnología de cada generador deben ser 
 
 Donde:
 + POA(g)	: precio ofertado considerando factor pérdida PDI y el tiempo de construcción.
-+ U(g)	: variable binaria de adjudicación
++ PC(g)	: variable de potencia casada [MW]
 
 el POA de cada proyecto se calcula como sigue:
 
 ![f2]
-
 ### Restricciones
-+ Potencia máxima adjudicable por tecnología.
-+ Potencia máxima adjudicable por zona/tecnología
-+ Potencia máxima adjudicable por PDI
-+ Potencia máxima y mínima de adjudicación por proyecto.
++ Potencia máxima adjudicable por tecnología. 
 
-[f1]: http://chart.apis.google.com/chart?cht=tx&chl={min%20\quad%20{z}=\sum{}{POA(g)\cdot%20P(g)}}
-[f2]: http://chart.apis.google.com/chart?cht=tx&chl={POA_{g}=Precio_{g}\cdot%20Fp(pdi_{g})-0.005\cdot%20(tmaxtecn(tecn_{g})-tej_{g})}
+![f3] 
++ Potencia máxima adjudicable por zona/tecnología 
 
+![f4]
++ Potencia máxima adjudicable por PDI 
+
+![f5] 
++ Potencia máxima adjudicable por agrupación de PDI (limitación) 
+
+![f6] 
++ Potencia máxima y mínima de adjudicación por proyecto. 
+
+![f7]
+
+![f8]
++ Monto total de garantía del banco mundial adjudicable por tecnología 
+
+![f9] 
+
+Donde:
++ PC(g)	: variable de potencia casada [MW]
++ UC(g)	: variable binaria de adjudicación
+
+[f1]: http://chart.apis.google.com/chart?cht=tx&chl={min%20\quad%20{z}=\sum{}{POA(g)\cdot%20PC(g)}}
+[f2]: http://chart.apis.google.com/chart?cht=tx&chl={POA(g)=Precio(g)\cdot%20Fp(pdi(g))-0.005\cdot%20(tmaxtecn(tecn(g))-tej(g))}
+[f3]: http://chart.apis.google.com/chart?cht=tx&chl={\sum_{}{PC(g)}\pm%20VH(tecn)=P_{min}(tecn)\qquad%20\forall%20g\in%20[tecn]}
+[f4]: http://chart.apis.google.com/chart?cht=tx&chl={\sum_{}{PC(g)}\leq%20P_{max}(zona)\qquad%20\forall%20g\in%20[zona]}
+[f5]: http://chart.apis.google.com/chart?cht=tx&chl={\sum_{}{PC(g)}\leq%20P_{max}(pdi)\qquad%20\forall%20g\in%20[pdi]}
+[f6]: http://chart.apis.google.com/chart?cht=tx&chl={\sum_{}{PC(g)}\leq%20P_{max}(limitacion)\qquad%20\forall%20g\in%20[limitacion(pdi)]}
+[f7]: http://chart.apis.google.com/chart?cht=tx&chl={PC(g)\leq%20P_{max}(g)\cdot%20UC(g)\qquad%20\forall%20g\in%20[generadores]}
+[f8]: http://chart.apis.google.com/chart?cht=tx&chl={PC(g)\geq%20P_{min}(g)\cdot%20UC(g)\qquad%20\forall%20g\in%20[generadores]}
+[f9]: http://chart.apis.google.com/chart?cht=tx&chl={\sum_{}{Gbm(g)\cdot%20P_{max}(g)\leq%20Gbm_{max}(tecn)}\qquad%20\forall%20g\in%20[tecn]}
 
