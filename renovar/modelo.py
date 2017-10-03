@@ -148,13 +148,20 @@ def nodal_balance_rule(model, pdi):
 
 model.CT_nodal_balance = Constraint(model.PDI, rule=nodal_balance_rule)
 
-# CONSTRAINT 2: limites adicionales para cada pdi´
+# CONSTRAINT 2: limites adicionales para cada pdi
 def nodal_limit_rule(model, limitacion):
 
     if not model.config_value['restriccion_limitacion']:
         return Constraint.Skip
-
-    return sum(model.GEN_PC[g] for g in model.GENERADORES if model.gen_pdi[g] in model.limitacion_pdi[limitacion]) <= model.limitacion_max[limitacion]
+    lside = 0
+    formular = False
+    for g in model.GENERADORES:
+        if model.gen_pdi[g] in model.limitacion_pdi[limitacion]:
+            lside += model.GEN_PC[g]
+            formular = True
+    if not formular:
+        return Constraint.Skip
+    return  lside <= model.limitacion_max[limitacion]
 
 model.CT_nodal_limit = Constraint(model.LIMITACION, rule=nodal_limit_rule)
 
@@ -212,8 +219,17 @@ def gbm_rule(model, tecnologia):
 
     if not model.config_value['restriccion_gbm']:
         return Constraint.Skip
-
-    return sum(model.gen_gbm[g]*model.gen_pmax[g]*model.GEN_UC[g] for g in model.GENERADORES if tecnologia == model.gen_tecnologia[g]) <= model.tecnologia_gbm[tecnologia]
+    lside = 0
+    formular = False
+    for g in model.GENERADORES:
+        if tecnologia == model.gen_tecnologia[g]:
+            lside += model.gen_gbm[g] * model.gen_pmax[g] * model.GEN_UC[g]
+            formular = True
+    if lside == 0 or not formular:
+        return Constraint.Skip
+    
+    rside = model.tecnologia_gbm[tecnologia]
+    return  lside <= rside
 
 model.CT_gbm = Constraint(model.TECNOLOGIAS, rule=gbm_rule)
 
