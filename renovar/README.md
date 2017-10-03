@@ -3,38 +3,41 @@ En el presente documento se describe el funcionamiento del modelo de simulación
 ## Datos de entrada/ Archivos de parámetros
 Los datos de entrada se manejan a través de archivos *.csv*. Los archivos necesarios son los que se detallan a continuación con sus respectivos parámetros.
 ### Data Config
-|           config           | config value |                       Descripción                      |
-|:--------------------------:|:------------:|:------------------------------------------------------:|
-|          debugging         | true/false |           generar archivos LP para debuggear           |
-|      restriccion_nodal     | true/false |             considerar restricción por pdi             |
-| restriccion_por_tecnologia | true/false |     considerar restricción de mínimo por tecnología    |
-|    restriccion_por_zona    | true/false |             considerar restricción por zona            |
-|      precio_aleatorio      | true/false | considerar parámetro de precio aleatorio por generador |
-|     restriccion_minimo     | true/false |  considerar parámetro de potencia mínima por generador |
-|     restriccion_gbm        | true/false |  considerar restricción de garantía banco mundial      |
-|          solver            | cplex/glpk |  elegir solver para realizar la optimización           |
+| config                     | config value | descripción                                                   |
+|:--------------------------:|:------------:|:-------------------------------------------------------------:|
+| debugging                  | true/false   | Generar archivos LP para debuggear                            |
+| restriccion_nodal          | true/false   | Considerar restricción por pdi                                |
+| restriccion_limitación     | true/false   | Considerar restricción de limitaciones por agrupación de pdi  |
+| restriccion_por_tecnologia | true/false   | Considerar restricción de mínimo por tecnología               |
+| restriccion_por_zona       | true/false   | Considerar restricción por zona                               |
+| precio_aleatorio           | true/false   | Considerar parámetro de precio aleatorio por generador        |
+| restriccion_minimo         | true/false   | Considerar parámetro de potencia mínima por generador         |
+| restriccion_gbm            | true/false   | Considerar restricción de garantía banco mundial              |
+| solver                     | cplex/glpk   | Elegir solver para realizar la optimización                   |
+
+*no se deben modificar los nombres de la columna config, solamente los valores de config value.
 
 ### Generadores
-|                 parámetro                 |    valor   |                    descripción                    |
-|:-----------------------------------------:|:----------:|:-------------------------------------------------:|
-|                   nombre                  |   string   |                  nombre proyecto                  |
-|                 disponible                | true/false |                considerar o no en modelo          |
-|                    pdi                    |   string   |               punto de interconexión              |
-|                    zona                   |   string   |                     zona                          |
-|                 tecnología                |   string   |                     tecnologia                    |
-|                    pmax [MW]              |    float   |               potencia ofertada                   |
-|                    pmin [MW]              |    float   |   potencia mínima de adjudicación parcial         |
-|            tiempo de ejecución [dias]     |    float   |       tiempo de ejecución proyecto (días)         |
-|                    gbm [$/MW]             |    float   |       tiempo de ejecución proyecto (días)         |
-|               precio oferta [$/MWh]       |    float   |                      precio ofertado              |
-|                 precio_a                  |    float   |    parámetro *a* de la distribución respectiva    |
-|                 precio_b                  |    float   |    parámetro *b* de la distribución respectiva    |
-|              precio aleatorio             | true/false | considerar variación de precio según distribución |
-| Distribución de probabilidad de la oferta |   string*  |                tipo de distribución               |
+| parámetro                                 |    valor   |                    descripción                      |
+|:-----------------------------------------:|:----------:|:---------------------------------------------------:|
+| nombre                                    |   string   | Nombre proyecto                                     |
+| disponible                                | true/false | Indica si optimización considera el proyecto o no   |
+| pdi                                       |   string   | Código del Punto de Interconexión                   |
+| zona                                      |   string   | Zona de interconexión                               |
+| tecnología                                |   string   | Tecnología del generador                            |
+| pmax [MW]                                 |    float   | Potencia máxima ofertada                            |
+| pmin [MW]                                 |    float   | Potencia mínima para casación parcial               |
+| tiempo de ejecución [dias]                |    float   | Tiempo de ejecución de proyecto                     |
+| gbm [$/MW]                                |    float   | Monto de garantía del Banco Mundial solicitada      |
+| precio oferta [$/MWh]                     |    float   | Precio ofertado                                     |
+| precio_a                                  |    float   | Parámetro *a* de la distribución respectiva         |
+| precio_b                                  |    float   | Parámetro *b* de la distribución respectiva         |
+| precio aleatorio                          | true/false | Considerar variación de precio según distribución   |
+| Distribución de probabilidad de la oferta |   string*  | Tipo de distribución                                |
 
 Los valores asignados a los pdi, zona y tecnología de cada generador deben ser consistentes con los pdi, zona y tecnología existentes en sus archivos respectivos.
 
-*Los valores de distribución de probabilidad utilizables son los siguientes:
+*Los valores de distribución de probabilidad utilizables son los siguientes (si se ingresa otro valor se toma por defecto distribución uniforme):
  
 | Distribución | Parámetro a | Parámetro b |
 |:------------:|:-----------:|:-----------:|
@@ -44,28 +47,35 @@ Los valores asignados a los pdi, zona y tecnología de cada generador deben ser 
 | uniforme     | low bound   | high bound  |
  
 ### Tecnologias
-| Parámetro | Valor | Descripción |
-|:---------:|:-----:|:-----------:|
-|  nombre   |string |      nombre tecnología       |
-|     min [MW]  | float |      potencia mínima restricción por tecnología       |
-|  tejecucionmax [dias]   | float |      tiempo de ejecución máximo por tecnología       |
-|  preciomax [$/MWh]  | float |      precio máximo de oferta por tecnología      |
-| gbm [$] | float | gbm total por tecnología |
+| Parámetro              | Valor | Descripción                                 |
+|:----------------------:|:-----:|:-------------------------------------------:|
+| nombre                 |string | Nombre tecnología                           |
+| min [MW]               | float | Potencia mínima restricción por tecnología  |
+| tejecucionmax [dias]   | float | Tiempo de ejecución máximo por tecnología   |
+| preciomax [$/MWh]      | float | Precio máximo de oferta por tecnología      |
+| gbm [$]                | float | Gbm total por tecnología                    |
 
 ### Zonas
-| Parámetro | Valor | Descripción |
-|:---------:|:-----:|:-----------:|
-|  nombre   |string |      nombre zona       |
-|  max [MW]  | float |  potencia máxima restricción por zona   |
-|  tecnologias  |[string1,..] |   lista de tecnologias involucradas en la restricción por zona      |
-|  pdi's   |[string1,..] |  lista de pdi pertenecientes a la zona |
+| Parámetro            | Valor        | Descripción                                                  |
+|:--------------------:|:------------:|:------------------------------------------------------------:|
+| nombre restricción   | string       | Nombre de la restricción zonal                               |
+| max [MW]             | float        | Potencia máxima restricción por zona                         |
+| tecnologias          | [string1,..] | Lista de tecnologias involucradas en la restricción por zona |
+| zonas                | [string1,..] | Lista de zonas pertenecientes a la restricción               |
 
 ### Pdi
-| Parámetro | Valor | Descripción |
-|:---------:|:-----:|:-----------:|
-|  nombre   |string |      nombre pdi     |
-| max [MW]  | float |   Potencia máxima de inyección de pdi |
-|     fp    | float |       Factor de pérdidas asociado al pdi   |
+| Parámetro            | Valor | Descripción                         |
+|:--------------------:|:-----:|:-----------------------------------:|
+| nombre               |string | Nombre o código pdi                 |
+| max [MW]             | float | Potencia máxima de inyección de pdi |
+| fp                   | float | Factor de pérdidas asociado al pdi  |
+
+### Limitación
+| Parámetro | Valor        | Descripción                           |
+|:---------:|:------------:|:-------------------------------------:|
+| nombre    | string       | Nombre limitación                     |
+| max [MW]  | float        | Potencia máxima por agrupación de pdi |
+| pdi       | [string1,..] | pdi's asociados a la restricción        |
 
 ## Modelo matemático
 ### Función objetivo
@@ -77,7 +87,7 @@ Donde:
 
 el POA de cada proyecto se calcula como sigue:
 
-POA(g) = Precio(g) * Fp(pdi(g)) - 0.005 * (tmaxtecn(tecn(g))-tej(g))
+![f2]
 
 ### Restricciones
 + Potencia máxima adjudicable por tecnología.
@@ -86,4 +96,6 @@ POA(g) = Precio(g) * Fp(pdi(g)) - 0.005 * (tmaxtecn(tecn(g))-tej(g))
 + Potencia máxima y mínima de adjudicación por proyecto.
 
 [f1]: http://chart.apis.google.com/chart?cht=tx&chl={min%20\quad%20{z}=\sum{}{POA(g)\cdot%20P(g)}}
+[f2]: http://chart.apis.google.com/chart?cht=tx&chl={POA_{g}=Precio_{g}\cdot%20Fp(pdi_{g})-0.005\cdot%20(tmaxtecn(tecn_{g})-tej_{g})}
+
 
