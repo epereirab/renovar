@@ -1,3 +1,3 @@
 TECNOLOGÍA,Mínimo [MW],Tiempo de ejecución máximo [Días],Precio máximo [$/MWh],Monto GBM [MM$]
-eolica,550,730,56.25,210
-solar,450,730,57.04,210
+EOL,550,730,56.25,210
+SFV,450,730,57.04,210

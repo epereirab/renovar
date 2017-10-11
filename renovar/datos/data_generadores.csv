@@ -1,16 +1,41 @@
 GENERADOR,gen_disponible,gen_pdi,gen_zona,gen_tecnologia,gen_pmax,gen_pmin,gen_tejecucion,gen_gbm,gen_precio,gen_precio_a,gen_precio_b,gen_precio_aleatorio,gen_precio_distribucion
-EOL-36 P.E. O´Connor,true,3120,COMAHUE,eolica,50,25,573,0,59,59,2,true,normal
-EOL-04 P.E. Viento Austral,true,3100,PATAGONIA,eolica,97.2,48.6,649,0,58.9,58.9,2,true,normal
-EOL-28 P.E. Loma blanca 5,true,3200,PATAGONIA,eolica,100,50,810,0,53.55,53.55,2,true,normal
-EOL-40 P.E. La Deseada,true,3090,PATAGONIA,eolica,100,50,667,0,52,52,2,true,normal
-EOL-02 P.E. Vientos Bajo Hondo,true,1150,BUENOS AIRES,eolica,99,49.5,690,0,57.89,57.89,2,true,normal
-EOL-03 P.E. Vientos Bajo Hondo I,true,1250,BUENOS AIRES,eolica,99,49.5,640,0,55.49,55.49,2,true,normal
-EOL-18 P.E. Bahía Blanca,true,1250,BUENOS AIRES,eolica,96,48,707,0,52.19,52.19,2,true,normal
-EOL-43 P.E. De La Bahía,true,1160,BUENOS AIRES,eolica,50,25,490,0,56,56,2,true,normal
-EOL-49 P.E. Wayra II,true,1160,BUENOS AIRES,eolica,100,50,900,0,52.7,52.7,2,true,normal
-SFV-08 P.S. Arauco,true,4020,NOA,solar,50,25,400,0,55.98,55.98,2,true,normal
-SFV-26 P.S. Andalgalá,true,4160,NOA,solar,30.8,15.4,480,0,57.43,57.43,2,true,normal
-SFV-35 P.S. Cafayate,true,4320,NOA,solar,50,25,426,0,58.45,58.45,2,true,normal
-SFV-56 P.S. Andalgalá,true,4160,NOA,solar,100,50,510,0,57.77,57.77,2,true,normal
-SFV-07 P.S. Algarrobito,true,6300,RESTO SOLAR,solar,30,15,361,0,57.66,57.66,2,true,normal
-SFV-58 P.S. Ullum X,true,6390,RESTO SOLAR,solar,100,50,510,0,57.77,57.77,2,true,normal
+EOL-01,true,6210,RESTO EOLICO,EOL,24,24,550,0,58.698,58.698,5,true,normal
+EOL-07,true,1210,BUENOS AIRES,EOL,47.5,47.5,730,0,45,45,5,true,normal
+EOL-10,true,1040,COMAHUE,EOL,100,100,730,0,50,50,5,true,normal
+EOL-11,true,1140,BUENOS AIRES,EOL,99.2,99.2,730,0,47,47,5,true,normal
+EOL-12,true,3130,COMAHUE,EOL,48,48,730,0,44.796,44.796,5,true,normal
+EOL-13,true,3020,PATAGONIA,EOL,27.6,27.6,600,0,45.84,45.84,5,true,normal
+EOL-21,true,7000,RESTO EOLICO,EOL,24.15,24.15,524,0,49.121,49.121,5,true,normal
+EOL-23,true,1070,COMAHUE,EOL,100,100,730,0,50,50,5,true,normal
+EOL-24,true,1000,COMAHUE,EOL,50,50,730,0,49,49,5,true,normal
+EOL-25,true,1060,COMAHUE,EOL,100,100,730,0,48,48,5,true,normal
+EOL-26,true,1000,COMAHUE,EOL,50,50,730,0,47,47,5,true,normal
+EOL-30,true,3190,PATAGONIA,EOL,100,100,686,0,50.604,50.604,5,true,normal
+EOL-31,true,3190,PATAGONIA,EOL,100,100,707,0,50.728,50.728,5,true,normal
+EOL-34,true,1210,BUENOS AIRES,EOL,88.2,88.2,543,0,46,46,5,true,normal
+EOL-38,true,3010,PATAGONIA,EOL,78.2,78.2,730,0,45.093,45.093,5,true,normal
+EOL-39,true,3070,PATAGONIA,EOL,37.4,37.4,730,0,48.961,48.961,5,true,normal
+EOL-41,true,3020,PATAGONIA,EOL,49.5,49.5,621,0,48,48,5,true,normal
+EOL-42,true,2000,BUENOS AIRES,EOL,50,50,542,0,46.341,46.341,5,true,normal
+EOL-36,true,3120,COMAHUE,EOL,50,50,573,0,47.41,47.41,5,true,normal
+EOL-04,true,3100,PATAGONIA,EOL,97.2,97.2,649,0,47.33,47.33,5,true,normal
+EOL-28,true,3200,PATAGONIA,EOL,100,100,810,0,43.03,43.03,5,true,normal
+EOL-40,true,3090,PATAGONIA,EOL,100,100,667,0,47,47,5,true,normal
+EOL-02,true,1150,BUENOS AIRES,EOL,99,99,690,0,46.52,46.52,5,true,normal
+EOL-03,true,1250,BUENOS AIRES,EOL,99,99,640,0,44.59,44.59,5,true,normal
+EOL-18,true,1250,BUENOS AIRES,EOL,96,96,707,0,43,43,5,true,normal
+EOL-43,true,1160,BUENOS AIRES,EOL,50,50,490,0,45,45,5,true,normal
+EOL-49,true,1160,BUENOS AIRES,EOL,100,100,900,0,46,46,5,true,normal
+EOL-M1,true,1090,COMAHUE,EOL,40,40,640,0,44,44,5,true,normal
+EOL-M2,true,1030,PATAGONIA,EOL,63,63,640,0,44,44,5,true,normal
+EOL-M3,true,1250,BUENOS AIRES,EOL,52.5,52.5,640,0,43,43,5,true,normal
+EOL-M4,true,1250,BUENOS AIRES,EOL,100,100,640,0,43,43,5,true,normal
+EOL-M5,true,1000,COMAHUE,EOL,75,75,640,0,47,47,5,true,normal
+EOL-M6,true,1020,COMAHUE,EOL,100,100,640,0,47,47,5,true,normal
+EOL-M7,true,1080,COMAHUE,EOL,100,100,640,0,47,47,5,true,normal
+EOL-M8,true,1080,COMAHUE,EOL,100,100,640,0,47,47,5,true,normal
+EOL-M9,true,1070,COMAHUE,EOL,100,100,730,0,49,49,5,true,normal
+EOL-M10,true,1070,COMAHUE,EOL,100,100,730,0,48,48,5,true,normal
+EOL-M11,true,1060,COMAHUE,EOL,100,100,730,0,42.0,48,5,false,normal
+EOL-M12,true,1060,COMAHUE,EOL,100,100,730,0,48,48,5,true,normal
+EOL-M13,true,1060,COMAHUE,EOL,100,100,730,0,48,48,5,true,normal
