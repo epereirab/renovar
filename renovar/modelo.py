@@ -60,6 +60,7 @@ model.gen_precio_a = Param(model.GENERADORES)
 model.gen_precio_b = Param(model.GENERADORES)
 model.gen_precio_aleatorio = Param(model.GENERADORES)
 model.gen_precio_distribucion = Param(model.GENERADORES)
+model.gen_alternativo = Param(model.GENERADORES)
 
 # TECNOLOGIAS
 model.tecnologia_min = Param(model.TECNOLOGIAS)
@@ -232,6 +233,16 @@ def gbm_rule(model, tecnologia):
     return  lside <= rside
 
 model.CT_gbm = Constraint(model.TECNOLOGIAS, rule=gbm_rule)
+# CONSTRAINT 8: proyecto alternativo
+def gen_alternativo_rule(model, g):
+    if not model.gen_alternativo[g]:
+        return Constraint.Skip
+    print model.gen_alternativo[g]
+    rside = 1
+    lside = model.GEN_UC[g] + model.GEN_UC[model.gen_alternativo[g]]
+    return lside <= rside
+
+model.CT_alternativo = Constraint(model.GENERADORES, rule=gen_alternativo_rule)
 
 ###########################################################################
 # FUNCION OBJETIVO

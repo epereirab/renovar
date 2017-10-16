@@ -71,7 +71,7 @@ data_modelo.load(filename=nombre_archivo,
                  param=(model.gen_disponible, model.gen_pdi, model.gen_zona, model.gen_tecnologia,
                         model.gen_pmax, model.gen_pmin, model.gen_tejecucion, model.gen_gbm,
                         model.gen_precio, model.gen_precio_a, model.gen_precio_b, model.gen_precio_aleatorio,
-                        model.gen_precio_distribucion),
+                        model.gen_precio_distribucion, model.gen_alternativo),
                  index=model.GENERADORES)
 print 'importacion OK'
 
