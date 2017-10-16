@@ -34,6 +34,7 @@ Los datos de entrada se manejan a través de archivos *.csv*. Los archivos neces
 | precio_b                                  |    float   | Parámetro *b* de la distribución respectiva         |
 | precio aleatorio                          | true/false | Considerar variación de precio según distribución   |
 | Distribución de probabilidad de la oferta |   string*  | Tipo de distribución                                |
+| proyecto alternativo                      |   string   | Nombre de oferta alternativa                        |
 
 Los valores asignados a los pdi, zona y tecnología de cada generador deben ser consistentes con los pdi, zona y tecnología existentes en sus archivos respectivos.
 
@@ -108,11 +109,14 @@ el POA de cada proyecto se calcula como sigue:
 ![f8]
 + Monto total de garantía del banco mundial adjudicable por tecnología 
 
-![f9] 
+![f9]
++ Proyecto alternativo 
+
+![f10] 
 
 Donde:
-+ PC(g)	: variable de potencia casada [MW]
-+ UC(g)	: variable binaria de adjudicación
++ PC(g)	: variable de potencia casada del generador g en [MW] 
++ UC(g)	: variable binaria de adjudicación del generador g
 + VH(tecn) : variable de holgura por tecnología
 
 [f1]: http://chart.apis.google.com/chart?cht=tx&chl={min%20\quad%20{z}=\sum{}{POA(g)\cdot%20PC(g)}}
@@ -124,4 +128,5 @@ Donde:
 [f7]: http://chart.apis.google.com/chart?cht=tx&chl={PC(g)\leq%20P_{max}(g)\cdot%20UC(g)\qquad%20\forall%20g\in%20[generadores]}
 [f8]: http://chart.apis.google.com/chart?cht=tx&chl={PC(g)\geq%20P_{min}(g)\cdot%20UC(g)\qquad%20\forall%20g\in%20[generadores]}
 [f9]: http://chart.apis.google.com/chart?cht=tx&chl={\sum_{}{Gbm(g)\cdot%20P_{max}(g)\leq%20Gbm_{max}(tecn)}\qquad%20\forall%20g\in%20[tecn]}
+[f10]: http://chart.apis.google.com/chart?cht=tx&chl={UC(g)%2bUC(alternativo(g))\leq%201\qquad%20\forall%20g\in%20[generadores]}
 
