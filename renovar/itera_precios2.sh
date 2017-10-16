@@ -24,10 +24,8 @@ GEN3=$ARG3
 GEN3+=3
 
 for precio in `seq $ARG6 $ARG8 $ARG7`; do
-   precio1=$precio
-   ((precio1+=$ARG4))
-   precio2=$precio
-   ((precio2+=$ARG5))
+   precio1=`echo "$precio + $ARG4" | bc -l`
+   precio2=`echo "$precio + $ARG5" | bc -l`
    echo $precio
    echo $precio1
    echo $precio2
