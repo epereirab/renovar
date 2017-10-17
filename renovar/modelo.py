@@ -85,6 +85,8 @@ model.zona_zonas = Param(model.ZONAS)
 # gen_poa (gen_precio, gen_fppdi, gen_tejecucion, tecnologia_tejecucionmax)
 def rule_gen_poa(model, g):
     dias_adelanto = (model.tecnologia_tejecucionmax[model.gen_tecnologia[g]]-model.gen_tejecucion[g])
+    if model.tecnologia_preciomax[model.gen_tecnologia[g]] < model.gen_precio[g]:
+        print 'WARNING: El precio ofertado por ' + str(g) + ' es mayor al precio máximo ' + str(model.gen_tecnologia[g])
     if model.config_value['precio_aleatorio']:
         if not model.gen_precio_aleatorio[g]:
             return model.gen_precio[g]*model.pdi_fp[model.gen_pdi[g]]-0.005 * dias_adelanto
@@ -237,7 +239,9 @@ model.CT_gbm = Constraint(model.TECNOLOGIAS, rule=gbm_rule)
 def gen_alternativo_rule(model, g):
     if not model.gen_alternativo[g]:
         return Constraint.Skip
-    print model.gen_alternativo[g]
+    if model.gen_alternativo[g] not in model.GENERADORES:
+        print 'WARNING: El generador alternativo ' + str(model.gen_alternativo[g]) + ' del generador ' + str(g) + ' no existe'
+        return Constraint.Skip
     rside = 1
     lside = model.GEN_UC[g] + model.GEN_UC[model.gen_alternativo[g]]
     return lside <= rside
